@@ -27,7 +27,7 @@
     rr:predicateObjectMap
     [ 
       rr:predicate	foaf:name ; 
-      rr:objectMap	[ rr:column "\"Name\""; ];
+      rr:objectMap	[ rml:reference "\"Name\""; ];
     ].
 
 <#DB_source> a d2rq:Database;

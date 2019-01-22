@@ -15,7 +15,7 @@
     rml:source <#DB_source>;
     rr:sqlVersion rr:SQL2008;
     rml:query """
-        SELECT "Name", COUNT("Sport")
+        SELECT "Name", COUNT("Sport") as SPORTCOUNT
         FROM "Student"
         GROUP BY "Name"
         """ ];
@@ -28,10 +28,16 @@
     [ 
       rr:predicate	foaf:name ; 
       rr:objectMap	[ rml:reference "\"Name\""; ];
+    ];
+
+    rr:predicateObjectMap
+    [ 
+		rr:predicate	ex:numSport ; 
+		rr:objectMap	[ rml:reference "SPORTCOUNT"; ];
     ].
 
 <#DB_source> a d2rq:Database;
   d2rq:jdbcDSN "CONNECTIONDSN";
-  d2rq:jdbcDriver "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-  d2rq:username "sa";
-  d2rq:password "YourSTRONG!Passw0rd;" .
+  d2rq:jdbcDriver "org.postgresql.Driver";
+  d2rq:username "postgres";
+  d2rq:password "" .

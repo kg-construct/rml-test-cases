@@ -15,7 +15,7 @@
     rml:source <#DB_source>;
     rr:sqlVersion rr:SQL2008;
     rml:query """
-        SELECT "Name", COUNT("Sport")
+        SELECT "Name", COUNT("Sport") as SPORTCOUNT
         FROM "Student"
         GROUP BY "Name"
         """ ];
@@ -28,6 +28,12 @@
     [ 
       rr:predicate	foaf:name ; 
       rr:objectMap	[ rml:reference "\"Name\""; ];
+    ];
+
+    rr:predicateObjectMap
+    [ 
+		rr:predicate	ex:numSport ; 
+		rr:objectMap	[ rml:reference "SPORTCOUNT"; ];
     ].
 
 <#DB_source> a d2rq:Database;
