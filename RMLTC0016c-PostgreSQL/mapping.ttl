@@ -24,14 +24,14 @@
 
     rr:predicateObjectMap
     [
-      rr:predicate ex:weight;
-      rr:objectMap    [ rml:reference "\"Weight\""; ]
+      rr:predicate		ex:birthdate;
+      rr:objectMap		[ rml:reference "\"BirthDate\""; ]
     ];
 
     rr:predicateObjectMap
     [
-      rr:predicate ex:height;
-      rr:objectMap    [ rml:reference "\"Height\""; ]
+      rr:predicate		ex:entrancedate;
+      rr:objectMap		[ rml:reference "\"EntranceDate\""; ]
     ];
     .
 

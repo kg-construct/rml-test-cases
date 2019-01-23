@@ -24,19 +24,19 @@
 
     rr:predicateObjectMap
     [
-      rr:predicate ex:weight;
-      rr:objectMap    [ rml:reference "\"Weight\""; ]
+      rr:predicate		ex:birthdate;
+      rr:objectMap		[ rml:reference "\"BirthDate\""; ]
     ];
 
     rr:predicateObjectMap
     [
-      rr:predicate ex:height;
-      rr:objectMap    [ rml:reference "\"Height\""; ]
+      rr:predicate		ex:entrancedate;
+      rr:objectMap		[ rml:reference "\"EntranceDate\""; ]
     ];
     .
 
 <#DB_source> a d2rq:Database;
   d2rq:jdbcDSN "CONNECTIONDSN";
-  d2rq:jdbcDriver "org.postgresql.Driver";
-  d2rq:username "postgres";
-  d2rq:password "" .
+  d2rq:jdbcDriver "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+  d2rq:username "sa";
+  d2rq:password "YourSTRONG!Passw0rd;" .
