@@ -12,16 +12,24 @@
   rml:logicalSource [
     rml:source <#DB_source>;
     rr:sqlVersion rr:SQL2008;
-    rr:tableName "\"Students\""
+    rr:tableName "\"Student\""
   ];
 
   rr:subjectMap [
       rr:template "http://example.com/{ID}/{Name}";
+       r:class foaf:Person
     ];
 
-    rr:predicateObjectMap [
-      rr:predicate ex:id ;
-      rr:objectMap [ rml:reference "IDs" ]
+    rr:predicateObjectMap
+    [
+      rr:predicate		ex:id ;
+      rr:objectMap		[ rml:reference "\"ID\"";  ]
+    ];
+
+    rr:predicateObjectMap
+    [
+      rr:predicate		foaf:name ;
+      rr:objectMap		[ rml:reference "\"Name\"" ]
     ].
 
 <#DB_source> a d2rq:Database;
