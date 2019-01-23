@@ -10,6 +10,7 @@
   a rr:TriplesMap;
 
   rml:logicalSource [
+    rml:source <#DB_source>;
     rr:sqlVersion rr:SQL2008;
     rml:query """
         SELECT "Code", "Name", "Lan"
