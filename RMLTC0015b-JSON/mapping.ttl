@@ -12,8 +12,9 @@
   a rr:TriplesMap;
 
   rml:logicalSource [
-    rml:source "country_en.csv";
-    rml:referenceFormulation ql:CSV
+    rml:source "country_en.json";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.countries[*]"
   ];
 
   rr:subjectMap [ rr:template "http://example.com/{Code}" ];
@@ -30,8 +31,9 @@
   a rr:TriplesMap;
 
   rml:logicalSource [
-    rml:source "country_es.csv";
-    rml:referenceFormulation ql:CSV
+    rml:source "country_en.json";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.countries[*]"
   ];
 
   rr:subjectMap [ rr:template "http://example.com/{Code}" ];
