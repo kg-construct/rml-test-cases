@@ -17,5 +17,6 @@ mappings:
       - [ex:dataFormat, $(data format)]
       - [[dcterms:hasPart, test:informationResourceInput, rml-tc:rules], https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/mapping.ttl~iri]
       - [[dcterms:hasPart, test:informationResourceInput], https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/$(input files)~iri]
+      - [[dcterms:hasPart, test:expectedResults], https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/output.nq~iri]
       - [rml-tc:hasError, $(error expected?), xsd:boolean]
       - [schema:isBasedOn, http://www.w3.org/TR/rdb2rdf-test-cases/#$(R2RML id)~iri]
