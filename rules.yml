@@ -1,0 +1,21 @@
+prefixes:
+  ex: http://example.com/
+  rml-tc: http://rml.io/ns/test-case/
+  test: http://www.w3.org/2006/03/test-description#
+
+mappings:
+  testcase:
+    sources:
+      - [metadata.csv~csv]
+    s: http://rml.io/test-case/$(RML id)
+    po:
+      - [a, [earl:TestCase, test:TestCase]]
+      - [dcterms:identifier,  $(RML id)]
+      - [[schema:name, dcterms:title], $(title)]
+      - [[schema:description, dcterms:description, test:purpose], $(purpose)]
+      - [ex:referenceFormulation, $(reference formulation)]
+      - [ex:dataFormat, $(data format)]
+      - [[dcterms:hasPart, test:informationResourceInput, rml-tc:rules], https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/mapping.ttl~iri]
+      - [[dcterms:hasPart, test:informationResourceInput], https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/$(input files)~iri]
+      - [rml-tc:hasError, $(error expected?), xsd:boolean]
+      - [schema:isBasedOn, http://www.w3.org/TR/rdb2rdf-test-cases/#$(R2RML id)~iri]

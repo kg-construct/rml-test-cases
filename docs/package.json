@@ -1,0 +1,18 @@
+{
+  "name": "docs",
+  "version": "0.0.1",
+  "description": "Documentation page for the RML test cases",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pieter Heyvaert <pheyvaer.heyvaert@ugent.be>",
+  "license": "MIT",
+  "dependencies": {
+    "@11ty/eleventy": "^0.7.1",
+    "@comunica/actor-init-sparql-rdfjs": "^1.5.3",
+    "n3": "^1.0.3",
+    "q": "^1.5.1",
+    "streamify-array": "^1.0.1"
+  }
+}

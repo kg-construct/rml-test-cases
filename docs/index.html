@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>RML Test Cases</title>
+    <script
+            src='https://www.w3.org/Tools/respec/respec-w3c-common'
+            class='remove'></script>
+    <script class='remove'>
+      var respecConfig = {
+        specStatus: "unofficial",
+        editors: [{
+          name: "Pieter Heyvaert"
+        }, {
+          name: "Anastasia Dimou"
+        }, {
+          name: "David Chaves Fraga"
+        }],
+        github: "https://github.com/rmlio/rml-test-cases/",
+        shortName: "rml-test-cases"
+      };
+    </script>
+</head>
+<body>
+<section id='abstract'>
+    <p>
+        This is required.
+    </p>
+</section>
+<section id='sotd'>
+    <p>
+        This is required.
+    </p>
+</section>
+<section data-dfn-for="Foo">
+    <h2>Test cases</h2>
+
+    {% for testcase in testcases %}
+    <section>
+        <h3>{{ testcase.id }}</h3>
+
+        <p><b>Title:</b> {{ testcase.title }}</p>
+        <p><b>Description:</b> {{ testcase.description }}</p>
+        <p><b>Data format:</b> {{ testcase.dataFormat }}</p>
+        <p><b>Reference Formulation:</b> {{ testcase.referenceFormulation }}</p>
+        <p>
+            <b>RML rules</b> (<a target="_blank" href="{{testcase.rules}}">download</a>):
+        <pre class="turtle">{{ testcase.rulesStr }}</pre>
+        </p>
+        <p><b>Error expected:</b>
+            {% if testcase.errorExpected == "true" %}
+                Yes
+            {% else %}
+                No
+            {% endif %}</p>
+        <p><b>Expected knowledge graph:</b>
+            {% if testcase.errorExpected == "true" %}
+                None, because an error is expected that stops the generation.
+            {% endif %}
+        </p>
+    </section>
+    {% endfor %}
+</section>
+</body>
+</html>
