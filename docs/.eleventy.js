@@ -1,5 +1,6 @@
 module.exports = {
   templateFormats: [
-    "html"
+    "html",
+    "css"
   ]
 };

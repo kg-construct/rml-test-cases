@@ -10,16 +10,22 @@
       var respecConfig = {
         specStatus: "unofficial",
         editors: [{
-          name: "Pieter Heyvaert"
+          name: "Pieter Heyvaert",
+          company: "Ghent University - IDLab, imec",
+          mailto: "pheyvaer.heyvaert@ugent.be"
         }, {
-          name: "Anastasia Dimou"
+          name: "Anastasia Dimou",
+          company: "Ghent University - IDLab, imec"
         }, {
-          name: "David Chaves Fraga"
+          name: "David Chaves-Fraga",
+          company: "Universidad Politécnica de Madrid"
         }],
         github: "https://github.com/rmlio/rml-test-cases/",
         shortName: "rml-test-cases"
       };
     </script>
+
+    <link href="./css/style.css" rel="stylesheet" />
 </head>
 <body>
 <section id='abstract'>
@@ -32,12 +38,19 @@
         This is required.
     </p>
 </section>
-<section data-dfn-for="Foo">
+
+<section id="intro">
+    This document defines the RML test cases, consisting of a collection of test case documents (input and expected output).
+    The purpose of the test cases is to determine the conformance of tools that execute RML rules to the RML specification.
+</section>
+<section id="test-cases">
     <h2>Test cases</h2>
+
+    This section presents the set of test cases we have created.
 
     {% for testcase in testcases %}
     <section>
-        <h3>{{ testcase.id }}</h3>
+        <h3 about="{{ testcase.iri }}">{{ testcase.id }}</h3>
 
         <p><b>Title:</b> {{ testcase.title }}</p>
         <p><b>Description:</b> {{ testcase.description }}</p>
@@ -45,7 +58,7 @@
         <p><b>Reference Formulation:</b> {{ testcase.referenceFormulation }}</p>
         <p>
             <b>RML rules</b> (<a target="_blank" href="{{testcase.rules}}">download</a>):
-        <pre class="turtle">{{ testcase.rulesStr }}</pre>
+        <pre class="rules">{{ testcase.rulesStr }}</pre>
         </p>
         <p><b>Error expected:</b>
             {% if testcase.errorExpected == "true" %}
@@ -62,7 +75,7 @@
             {% if testcase.errorExpected == "true" %}
                 None, because an error is expected that stops the generation.
             {% else %}
-                <pre class="turtle">{{ testcase.outputStr }}</pre>
+                <pre class="output">{{ testcase.outputStr }}</pre>
             {% endif %}
         </p>
     </section>
