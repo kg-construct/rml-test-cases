@@ -53,9 +53,16 @@
             {% else %}
                 No
             {% endif %}</p>
-        <p><b>Expected knowledge graph:</b>
+        <p><b>Expected knowledge graph:
+            {% if testcase.errorExpected == "false" %}
+            (<a target="_blank" href="{{testcase.output}}">download</a>)
+            {% endif %}
+
+        </b>
             {% if testcase.errorExpected == "true" %}
                 None, because an error is expected that stops the generation.
+            {% else %}
+                <pre class="turtle">{{ testcase.outputStr }}</pre>
             {% endif %}
         </p>
     </section>

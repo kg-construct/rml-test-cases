@@ -117,18 +117,30 @@
 :map_testcase_0 rr:predicateObjectMap :pom_8.
 :pm_14 a rr:PredicateMap.
 :pom_8 rr:predicateMap :pm_14.
-:pm_14 rr:constant rml-tc:hasError.
+:pm_14 rr:constant <http://purl.org/dc/terms/hasPart>.
+:pm_15 a rr:PredicateMap.
+:pom_8 rr:predicateMap :pm_15.
+:pm_15 rr:constant test:expectedResults.
 :pom_8 rr:objectMap :om_9.
 :om_9 a rr:ObjectMap;
+    rr:template "https://raw.githubusercontent.com/RMLio/rml-test-cases/master/{RML id}/output.nq";
+    rr:termType rr:IRI.
+:pom_9 a rr:PredicateObjectMap.
+:map_testcase_0 rr:predicateObjectMap :pom_9.
+:pm_16 a rr:PredicateMap.
+:pom_9 rr:predicateMap :pm_16.
+:pm_16 rr:constant rml-tc:hasError.
+:pom_9 rr:objectMap :om_10.
+:om_10 a rr:ObjectMap;
     rml:reference "error expected?";
     rr:termType rr:Literal;
     rr:datatype <http://www.w3.org/2001/XMLSchema#boolean>.
-:pom_9 a rr:PredicateObjectMap.
-:map_testcase_0 rr:predicateObjectMap :pom_9.
-:pm_15 a rr:PredicateMap.
-:pom_9 rr:predicateMap :pm_15.
-:pm_15 rr:constant <http://schema.org/isBasedOn>.
-:pom_9 rr:objectMap :om_10.
-:om_10 a rr:ObjectMap;
+:pom_10 a rr:PredicateObjectMap.
+:map_testcase_0 rr:predicateObjectMap :pom_10.
+:pm_17 a rr:PredicateMap.
+:pom_10 rr:predicateMap :pm_17.
+:pm_17 rr:constant <http://schema.org/isBasedOn>.
+:pom_10 rr:objectMap :om_11.
+:om_11 a rr:ObjectMap;
     rr:template "http://www.w3.org/TR/rdb2rdf-test-cases/#{R2RML id}";
     rr:termType rr:IRI.

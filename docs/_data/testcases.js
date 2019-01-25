@@ -31,12 +31,22 @@ async function getTestCases(path) {
         <http://example.com/dataFormat> ?dataFormat;
         <http://example.com/referenceFormulation> ?refFor.
         
+     OPTIONAL {?s <http://www.w3.org/2006/03/test-description#expectedResults> ?output .}
+        
      MINUS {?s <http://example.com/dataFormat> "RDF"} .
   }`,
     {sources: [{type: 'rdfjsSource', value: rdfjsSource}]})
     .then(function (result) {
       result.bindingsStream.on('data', async function (data) {
         data = data.toObject();
+
+        let output;
+        let outputStr;
+
+        if (data['?output']) {
+          output = data['?output'].value;
+          outputStr = (await _getHTTP(output)).replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        }
 
         testcases.push({
           iri:  data['?s'].value,
@@ -47,7 +57,9 @@ async function getTestCases(path) {
           id: data['?id'].value,
           errorExpected: data['?error'].value,
           dataFormat: data['?dataFormat'].value,
-          referenceFormulation: data['?refFor'].value
+          referenceFormulation: data['?refFor'].value,
+          output,
+          outputStr
         });
       });
 
