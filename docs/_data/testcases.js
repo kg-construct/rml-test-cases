@@ -28,10 +28,11 @@ async function getTestCases(path) {
         <http://rml.io/ns/test-case/rules> ?rules;
         <http://purl.org/dc/terms/identifier> ?id;
         <http://rml.io/ns/test-case/hasError> ?error;
-        <http://example.com/dataFormat> ?dataFormat;
-        <http://example.com/referenceFormulation> ?refFor.
+        <http://www.w3.org/2006/03/test-description#expectedResults> ?expectedResult.
         
-     OPTIONAL {?s <http://www.w3.org/2006/03/test-description#expectedResults> ?output .}
+        OPTIONAL { ?expectedResult <http://www.w3.org/ns/dcat#distribution> [
+          <http://www.w3.org/ns/dcat#downloadUrl> ?output
+        ]}
         
      MINUS {?s <http://example.com/dataFormat> "RDF"} .
   }`,
@@ -42,6 +43,8 @@ async function getTestCases(path) {
 
         let output;
         let outputStr;
+
+        console.log(data);
 
         if (data['?output']) {
           output = data['?output'].value;
