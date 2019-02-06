@@ -25,45 +25,46 @@ async function getTestCases(path) {
      ?s a <http://www.w3.org/ns/earl#TestCase>;
         <http://schema.org/name> ?name;
         <http://schema.org/description> ?description;
-        <http://rml.io/ns/test-case/rules> ?rules;
+        <http://rml.io/ns/test-case/rules> [
+          <http://www.w3.org/ns/dcat#distribution> [
+            <http://www.w3.org/ns/dcat#downloadUrl> ?rules
+          ]
+        ];
         <http://purl.org/dc/terms/identifier> ?id;
-        <http://rml.io/ns/test-case/hasError> ?error;
         <http://www.w3.org/2006/03/test-description#expectedResults> ?expectedResult.
         
         OPTIONAL { ?expectedResult <http://www.w3.org/ns/dcat#distribution> [
           <http://www.w3.org/ns/dcat#downloadUrl> ?output
-        ]}
-        
-     MINUS {?s <http://example.com/dataFormat> "RDF"} .
+        ]} .
   }`,
     {sources: [{type: 'rdfjsSource', value: rdfjsSource}]})
     .then(function (result) {
       result.bindingsStream.on('data', async function (data) {
         data = data.toObject();
 
-        let output;
-        let outputStr;
+        if (data['?id'].value.indexOf('SPARQL') === -1) {
+          let output;
+          let outputStr;
 
-        console.log(data);
+          if (data['?output']) {
+            output = data['?output'].value;
+            outputStr = fs.readFileSync(output.replace('https://raw.githubusercontent.com/RMLio/rml-test-cases/master', '..'), 'utf-8').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+          }
 
-        if (data['?output']) {
-          output = data['?output'].value;
-          outputStr = (await _getHTTP(output)).replace(/</g, '&lt;').replace(/>/g, '&gt;')
+          testcases.push({
+            iri: data['?s'].value,
+            title: data['?name'].value,
+            description: data['?description'].value,
+            rules: data['?rules'].value,
+            rulesStr: fs.readFileSync(data['?rules'].value.replace('https://raw.githubusercontent.com/RMLio/rml-test-cases/master', '..'), 'utf-8').replace(/</g, '&lt;').replace(/>/g, '&gt;'),
+            id: data['?id'].value,
+            errorExpected: data['?expectedResult'].value === 'http://rml.io/ns/test-case/InvalidRulesError',
+            output,
+            outputStr
+          });
+
+          console.log(data['?id'].value);
         }
-
-        testcases.push({
-          iri:  data['?s'].value,
-          title: data['?name'].value,
-          description: data['?description'].value,
-          rules: data['?rules'].value,
-          rulesStr: (await _getHTTP(data['?rules'].value)).replace(/</g, '&lt;').replace(/>/g, '&gt;'),
-          id: data['?id'].value,
-          errorExpected: data['?error'].value,
-          dataFormat: data['?dataFormat'].value,
-          referenceFormulation: data['?refFor'].value,
-          output,
-          outputStr
-        });
       });
 
       result.bindingsStream.on('end', function () {

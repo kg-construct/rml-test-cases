@@ -70,7 +70,7 @@ mappings:
       po:
         - [a, dcat:Distribution]
         - [[schema:name, dcterms:title, rdfs:label], "RML rules in Turtle format of test case with id $(RML id)"]
-        - [dcat:downloadUrl, https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/mapping.ttl~iri]
+        - [dcat:downloadUrl, https://raw.githubusercontent.com/RMLio/rml-test-cases/master/test-cases/$(RML id)/mapping.ttl~iri]
         - [dcat:mediaType, text/turtle]
   output-dataset:
       sources:
@@ -103,7 +103,7 @@ mappings:
     po:
       - [a, dcat:Distribution]
       - [[schema:name, dcterms:title, rdfs:label], "Expected RDF output of test case with id $(RML id)"]
-      - [dcat:downloadUrl, https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/output.nq~iri]
+      - [dcat:downloadUrl, https://raw.githubusercontent.com/RMLio/rml-test-cases/master/test-cases/$(RML id)/output.nq~iri]
       - [dcat:mediaType, application/n-quads]
   input-dataset-1:
     sources:
@@ -136,7 +136,7 @@ mappings:
     po:
       - [a, dcat:Distribution]
       - [[schema:name, dcterms:title, rdfs:label], "An input file of test case with id $(RML id)"]
-      - [dcat:downloadUrl, https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/$(input file 1)~iri]
+      - [dcat:downloadUrl, https://raw.githubusercontent.com/RMLio/rml-test-cases/master/test-cases/$(RML id)/$(input file 1)~iri]
       - p: dcat:mediaType
         o:
           function: idlab-fn:getMIMEType
@@ -173,7 +173,7 @@ mappings:
     po:
       - [a, dcat:Distribution]
       - [[schema:name, dcterms:title, rdfs:label], "An input file of test case with id $(RML id)"]
-      - [dcat:downloadUrl, https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/$(input file 2)~iri]
+      - [dcat:downloadUrl, https://raw.githubusercontent.com/RMLio/rml-test-cases/master/test-cases/$(RML id)/$(input file 2)~iri]
       - p: dcat:mediaType
         o:
           function: idlab-fn:getMIMEType
@@ -210,7 +210,7 @@ mappings:
     po:
       - [a, dcat:Distribution]
       - [[schema:name, dcterms:title, rdfs:label], "An input file of test case with id $(RML id)"]
-      - [dcat:downloadUrl, https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/$(input file 3)~iri]
+      - [dcat:downloadUrl, https://raw.githubusercontent.com/RMLio/rml-test-cases/master/test-cases/$(RML id)/$(input file 3)~iri]
       - p: dcat:mediaType
         o:
           function: idlab-fn:getMIMEType
