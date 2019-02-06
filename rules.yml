@@ -2,6 +2,10 @@ prefixes:
   ex: http://example.com/
   rml-tc: http://rml.io/ns/test-case/
   test: http://www.w3.org/2006/03/test-description#
+  rut: http://rdfunit.aksw.org/ns/core#
+  mf: http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#
+  grel: http://users.ugent.be/~bjdmeest/function/grel.ttl#
+  idlab-fn: http://example.com/idlab/function/
 
 mappings:
   testcase:
@@ -9,14 +13,206 @@ mappings:
       - [metadata.csv~csv]
     s: http://rml.io/test-case/$(RML id)
     po:
-      - [a, [earl:TestCase, test:TestCase]]
+      - [a, [earl:TestCase, test:TestCase, rut:TestCase, mf:ManifestEntry]]
       - [dcterms:identifier,  $(RML id)]
-      - [[schema:name, dcterms:title], $(title)]
+      - [[schema:name, dcterms:title, rdfs:label, mf:name], $(title)]
       - [[schema:description, dcterms:description, test:purpose], $(purpose)]
-      - [ex:referenceFormulation, $(reference formulation)]
-      - [ex:dataFormat, $(data format)]
-      - [[dcterms:hasPart, test:informationResourceInput, rml-tc:rules], https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/mapping.ttl~iri]
-      - [[dcterms:hasPart, test:informationResourceInput], https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/$(input files)~iri]
-      - [[dcterms:hasPart, test:expectedResults], https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/output.nq~iri]
-      - [rml-tc:hasError, $(error expected?), xsd:boolean]
-      - [schema:isBasedOn, http://www.w3.org/TR/rdb2rdf-test-cases/#$(R2RML id)~iri]
+      - p: [dcterms:hasPart, test:informationResourceInput, rml-tc:rules]
+        o:
+          mapping: rules-dataset
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(RML id)]
+              - [str2, $(RML id)]
+      - p: [dcterms:hasPart, test:expectedResults]
+        o:
+          mapping: output-dataset
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(RML id)]
+              - [str2, $(RML id)]
+      - p: [dcterms:hasPart, test:expectedResults]
+        o: rml-tc:InvalidRulesError~iri
+        condition:
+          function: idlab-fn:equal
+          parameters:
+            - [grel:valueParameter, $(error expected?)]
+            - [grel:valueParameter2, "true"]
+      - p: [dcterms:hasPart, test:informationResourceInput]
+        o:
+          mapping: [input-dataset-1, input-dataset-2, input-dataset-3]
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(RML id)]
+              - [str2, $(RML id)]
+  rules-dataset:
+    sources:
+      - [metadata.csv~csv]
+    s: http://rml.io/test-case/$(RML id)/rules
+    po:
+      - [a, dcat:Dataset]
+      - [dcat:keyword, [rml, rules, mapping]]
+      - p: dcat:distribution
+        o:
+          mapping: rules-distribution
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(RML id)]
+              - [str2, $(RML id)]
+  rules-distribution:
+      sources:
+        - [metadata.csv~csv]
+      s: http://rml.io/test-case/$(RML id)/rules/distribution
+      po:
+        - [a, dcat:Distribution]
+        - [[schema:name, dcterms:title, rdfs:label], "RML rules in Turtle format of test case with id $(RML id)"]
+        - [dcat:downloadUrl, https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/mapping.ttl~iri]
+        - [dcat:mediaType, text/turtle]
+  output-dataset:
+      sources:
+        - [metadata.csv~csv]
+      s: http://rml.io/test-case/$(RML id)/output
+      condition:
+        function: idlab-fn:equal
+        parameters:
+          - [grel:valueParameter, "false"]
+          - [grel:valueParameter2, $(error expected?)]
+      po:
+        - [a, dcat:Dataset]
+        - p: dcat:distribution
+          o:
+            mapping: output-distribution
+            condition:
+              function: equal
+              parameters:
+                - [str1, $(RML id)]
+                - [str2, $(RML id)]
+  output-distribution:
+    sources:
+      - [metadata.csv~csv]
+    s: http://rml.io/test-case/$(RML id)/output/distribution
+    condition:
+      function: idlab-fn:equal
+      parameters:
+        - [grel:valueParameter, "false"]
+        - [grel:valueParameter2, $(error expected?)]
+    po:
+      - [a, dcat:Distribution]
+      - [[schema:name, dcterms:title, rdfs:label], "Expected RDF output of test case with id $(RML id)"]
+      - [dcat:downloadUrl, https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/output.nq~iri]
+      - [dcat:mediaType, application/n-quads]
+  input-dataset-1:
+    sources:
+      - [metadata.csv~csv]
+    s: http://rml.io/test-case/$(RML id)/input1
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+        - [grel:valueParameter, ""]
+        - [grel:valueParameter2, $(input file 1)]
+    po:
+      - [a, dcat:Dataset]
+      - p: dcat:distribution
+        o:
+          mapping: input-distribution-1
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(RML id)]
+              - [str2, $(RML id)]
+  input-distribution-1:
+    sources:
+      - [metadata.csv~csv]
+    s: http://rml.io/test-case/$(RML id)/input1/distribution
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+        - [grel:valueParameter, ""]
+        - [grel:valueParameter2, $(input file 1)]
+    po:
+      - [a, dcat:Distribution]
+      - [[schema:name, dcterms:title, rdfs:label], "An input file of test case with id $(RML id)"]
+      - [dcat:downloadUrl, https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/$(input file 1)~iri]
+      - p: dcat:mediaType
+        o:
+          function: idlab-fn:getMIMEType
+          parameters:
+            - [idlab-fn:str, $(input file 1)]
+  input-dataset-2:
+    sources:
+      - [metadata.csv~csv]
+    s: http://rml.io/test-case/$(RML id)/input2
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+        - [grel:valueParameter, ""]
+        - [grel:valueParameter2, $(input file 2)]
+    po:
+      - [a, dcat:Dataset]
+      - p: dcat:distribution
+        o:
+          mapping: input-distribution-2
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(RML id)]
+              - [str2, $(RML id)]
+  input-distribution-2:
+    sources:
+      - [metadata.csv~csv]
+    s: http://rml.io/test-case/$(RML id)/input2/distribution
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+        - [grel:valueParameter, ""]
+        - [grel:valueParameter2, $(input file 2)]
+    po:
+      - [a, dcat:Distribution]
+      - [[schema:name, dcterms:title, rdfs:label], "An input file of test case with id $(RML id)"]
+      - [dcat:downloadUrl, https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/$(input file 2)~iri]
+      - p: dcat:mediaType
+        o:
+          function: idlab-fn:getMIMEType
+          parameters:
+            - [idlab-fn:str, $(input file 2)]
+  input-dataset-3:
+    sources:
+      - [metadata.csv~csv]
+    s: http://rml.io/test-case/$(RML id)/input3
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+        - [grel:valueParameter, ""]
+        - [grel:valueParameter2, $(input file 3)]
+    po:
+      - [a, dcat:Dataset]
+      - p: dcat:distribution
+        o:
+          mapping: input-distribution-3
+          condition:
+            function: equal
+            parameters:
+              - [str1, $(RML id)]
+              - [str2, $(RML id)]
+  input-distribution-3:
+    sources:
+      - [metadata.csv~csv]
+    s: http://rml.io/test-case/$(RML id)/input3/distribution
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+        - [grel:valueParameter, ""]
+        - [grel:valueParameter2, $(input file 3)]
+    po:
+      - [a, dcat:Distribution]
+      - [[schema:name, dcterms:title, rdfs:label], "An input file of test case with id $(RML id)"]
+      - [dcat:downloadUrl, https://raw.githubusercontent.com/RMLio/rml-test-cases/master/$(RML id)/$(input file 3)~iri]
+      - p: dcat:mediaType
+        o:
+          function: idlab-fn:getMIMEType
+          parameters:
+            - [idlab-fn:str, $(input file 3)]
