@@ -25,7 +25,7 @@ mappings:
             parameters:
               - [str1, $(RML id)]
               - [str2, $(RML id)]
-      - p: [dcterms:hasPart, test:expectedResults]
+      - p: [dcterms:hasPart, test:expectedResults, mf:result]
         o:
           mapping: output-dataset
           condition:
@@ -33,7 +33,7 @@ mappings:
             parameters:
               - [str1, $(RML id)]
               - [str2, $(RML id)]
-      - p: [dcterms:hasPart, test:expectedResults]
+      - p: [dcterms:hasPart, test:expectedResults, mf:result]
         o: rml-tc:InvalidRulesError~iri
         condition:
           function: idlab-fn:equal
