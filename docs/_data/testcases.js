@@ -20,6 +20,7 @@ async function getTestCases(path) {
   const rdfjsSource = await getRDFjsSourceFromFile(path);
   const engine = newEngine();
   const testcases = [];
+  const promises = [];
 
   engine.query(`SELECT * {
      ?s a <http://www.w3.org/ns/earl#TestCase>;
@@ -41,42 +42,71 @@ async function getTestCases(path) {
     .then(function (result) {
       result.bindingsStream.on('data', async function (data) {
         data = data.toObject();
+        const id = data['?id'].value;
 
-        if (data['?id'].value.indexOf('SPARQL') === -1) {
+        if (id.indexOf('SPARQL') === -1) {
+          const dataDeferred = Q.defer();
+          promises.push(dataDeferred.promise);
+          console.log(`${id}: started.`);
           let output;
           let outputStr;
 
+          const outputDeferred = Q.defer();
+
           if (data['?output']) {
             output = data['?output'].value;
-            outputStr = fs.readFileSync(output.replace('https://raw.githubusercontent.com/RMLio/rml-test-cases/master', '..'), 'utf-8').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            fs.readFile(output.replace('https://raw.githubusercontent.com/RMLio/rml-test-cases/master', '..'), 'utf-8', (err, data) => {
+              outputStr = data.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+              console.log(`${id}: output is read from file`);
+              outputDeferred.resolve();
+            });
+          } else {
+            outputDeferred.resolve();
           }
 
-          testcases.push({
-            iri: data['?s'].value,
-            title: data['?name'].value,
-            description: data['?description'].value,
-            rules: data['?rules'].value,
-            rulesStr: fs.readFileSync(data['?rules'].value.replace('https://raw.githubusercontent.com/RMLio/rml-test-cases/master', '..'), 'utf-8').replace(/</g, '&lt;').replace(/>/g, '&gt;'),
-            id: data['?id'].value,
-            errorExpected: data['?expectedResult'].value === 'http://rml.io/ns/test-case/InvalidRulesError',
-            output,
-            outputStr
+          const rulesDeferred = Q.defer();
+          const rules = data['?rules'].value;
+          let rulesStr;
+
+          fs.readFile(rules.replace('https://raw.githubusercontent.com/RMLio/rml-test-cases/master', '..'), 'utf-8', (err, data) => {
+            rulesStr = data.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            console.log(`${id}: rules are read from file`);
+            rulesDeferred.resolve();
           });
 
-          console.log(data['?id'].value);
+          Q.all([rulesDeferred.promise, outputDeferred.promise]).then(() => {
+            testcases.push({
+              iri: data['?s'].value,
+              title: data['?name'].value,
+              description: data['?description'].value,
+              rules,
+              rulesStr,
+              id,
+              errorExpected: '' + (data['?expectedResult'].value === 'http://rml.io/ns/test-case/InvalidRulesError'),
+              output,
+              outputStr
+            });
+
+            console.log(`${id}: done.`);
+            dataDeferred.resolve();
+          });
+        } else {
+          console.log(`${id}: skipped.`);
         }
       });
 
       result.bindingsStream.on('end', function () {
-        testcases.sort( (a, b) => {
-          if (a.id > b.id) {
-            return 1;
-          } else {
-            return -1;
-          }
-        });
+        Q.all(promises).then(() => {
+          testcases.sort( (a, b) => {
+            if (a.id > b.id) {
+              return 1;
+            } else {
+              return -1;
+            }
+          });
 
-        deferred.resolve(testcases);
+          deferred.resolve(testcases);
+        });
       });
     });
 

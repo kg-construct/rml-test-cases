@@ -17,8 +17,8 @@
           name: "Anastasia Dimou",
           company: "Ghent University - IDLab, imec"
         }, {
-          name: "David Chaves-Fraga",
-          company: "Universidad Politécnica de Madrid"
+          name: "Ben De Meester",
+          company: "Ghent University - IDLab, imec"
         }],
         github: "https://github.com/rmlio/rml-test-cases/",
         shortName: "rml-test-cases"
@@ -30,23 +30,45 @@
 <body>
 <section id='abstract'>
     <p>
-        This is required.
+        This document defines the RML test cases to the determine the RML specification conformance of tools.
     </p>
 </section>
 <section id='sotd'>
-    <p>
-        This is required.
-    </p>
+    <!--<p>-->
+        <!--This is required.-->
+    <!--</p>-->
 </section>
 
 <section id="intro">
-    This document defines the RML test cases, consisting of a collection of test case documents (input and expected output).
-    The purpose of the test cases is to determine the conformance of tools that execute RML rules to the RML specification.
+    <h2>Introduction</h2>
+
+    <p>
+        This document defines the RML test cases, consisting of a collection of test case documents (input and expected output).
+        The purpose of the test cases is to determine the conformance of tools that execute RML rules to the RML specification.
+    </p>
 </section>
+
 <section id="test-cases">
     <h2>Test cases</h2>
 
-    This section presents the set of test cases we have created.
+    This section describes the RML test cases.
+    These descriptions are also <a href="https://raw.githubusercontent.com/RMLio/rml-test-cases/master/metadata.nt">available as RDF</a>.
+    The files are available on <a href="https://github.com/RMLio/rml-test-cases">Github</a> in the folder <code>test-cases</code>.
+    Each test case is contained in a single folder, containing three types of files:
+
+    <ul>
+        <li>Zero or more files containing the data sources,
+            in the case of JSON, XML, CSV, or
+            containing the SQL statements to create the necessary tables,
+            in the case of MySQL, PostgreSQL, and SQL Server.
+        </li>
+        <li>One file with the RML rules, called <code>mapping.ttl</code>,
+            in the Turtle format.
+        </li>
+        <li>Zero or one file with the expected RDF, called <code>output.nq</code>.
+            No file is provided if an error is expected that must halt the generation of the RDF.
+        </li>
+    </ul>
 
     {% for testcase in testcases %}
     <section>
