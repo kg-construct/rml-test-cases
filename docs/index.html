@@ -48,6 +48,48 @@
     </p>
 </section>
 
+
+<section id="datamodel">
+    <h2>Data model</h2>
+
+    <p>
+        We describe the test cases semantically
+        to increase their reusability and sharability.
+        To this end, we created a semantic data model,
+        with as main entity the test case (see figure below).
+        For each test case, the following details are described:
+        unique identifier,
+        title,
+        description,
+        relevant aspect of the RML specification,
+        data sources (optional),
+        expected knowledge graph or error, and
+        RML rules.
+    </p>
+
+    <p>
+        To provide the corresponding semantic descriptions,
+        the model uses mostly
+        the <a href="https://www.w3.org/TR/EARL10/">Evaluation and Report Language (EARL) 1.0 Schema</a>,
+        the <a href="http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#">Test case manifest vocabulary</a>,
+        the <a href="https://www.w3.org/2006/03/test-description#">Test Metadata vocabulary</a>, and
+        the <a href="https://www.w3.org/TR/vocab-dcat/">Data Catalog Vocabulary</a>.
+        A test case is annotated with the classes <code>earl:TestCase</code>, <code>test:TestCase</code>, and <code>mf:ManifestEntry</code>.
+        The identifier, title, description, and
+        the specific aspect of the RML specification that is being tested
+        are added as datatype properties.
+        The files that are provided as input to the tools are linked to the test cases via <code>test:informationResourceInput</code> and <code>dcterms:hasPart</code>.
+        The file with the RML rules is also linked via <code>rml-tc:rules</code>.
+        The objects of these properties are of the class <code>dcat:Dataset</code>,
+        which in turn link to a <code>dcat:Distribution</code> that includes a link to a file.
+        The expected output, whether that is a knowledge graph or an error, is linked via <code>test:expectedResults</code>, <code>mf:result</code>, and <code>dcterms:hasPart</code>.
+        In the case of a knowledge graph, the object of these properties is a <code>dcat:Dataset</code>, linked to a <code>dcat:Distribution</code>, to describe the file containing the graph.
+        In the case of an error, we link to the expected error.
+    </p>
+
+    <img src="img/data_model.png" />
+</section>
+
 <section id="test-cases">
     <h2>Test cases</h2>
 
