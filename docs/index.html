@@ -117,9 +117,14 @@
         <h3 about="{{ testcase.iri }}">{{ testcase.id }}</h3>
 
         <p><b>Title:</b> {{ testcase.title }}</p>
-        <p><b>Description:</b> {{ testcase.description }}</p>
+        <p><b>Description:</b> {{ testcase.description }}
+            {% if testcase.specRef != "null" %}
+            (<a target="_blank" href="{{ testcase.specRef }}">specification reference</a>)
+            {% endif %}
+        </p>
         <!--<p><b>Data format:</b> {{ testcase.dataFormat }}</p>-->
-        <!--<p><b>Reference Formulation:</b> {{ testcase.referenceFormulation }}</p>-->
+
+
         <p>
             <b>RML rules</b> (<a target="_blank" href="{{testcase.rules}}">download</a>):
         <pre class="rules">{{ testcase.rulesStr }}</pre>

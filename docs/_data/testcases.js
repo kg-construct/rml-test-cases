@@ -37,6 +37,8 @@ async function getTestCases(path) {
         OPTIONAL { ?expectedResult <http://www.w3.org/ns/dcat#distribution> [
           <http://www.w3.org/ns/dcat#downloadUrl> ?output
         ]} .
+        
+        OPTIONAL { ?s <http://www.w3.org/2006/03/test-description#specificationReference> ?specRef } .
   }`,
     {sources: [{type: 'rdfjsSource', value: rdfjsSource}]})
     .then(function (result) {
@@ -74,6 +76,12 @@ async function getTestCases(path) {
             rulesDeferred.resolve();
           });
 
+          let specRef = data['?specRef'];
+
+          if (specRef) {
+            specRef = specRef.value;
+          }
+
           Q.all([rulesDeferred.promise, outputDeferred.promise]).then(() => {
             testcases.push({
               iri: data['?s'].value,
@@ -84,7 +92,8 @@ async function getTestCases(path) {
               id,
               errorExpected: '' + (data['?expectedResult'].value === 'http://rml.io/ns/test-case/InvalidRulesError'),
               output,
-              outputStr
+              outputStr,
+              specRef
             });
 
             console.log(`${id}: done.`);
