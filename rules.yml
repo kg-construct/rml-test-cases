@@ -17,6 +17,7 @@ mappings:
       - [dcterms:identifier,  $(RML id)]
       - [[schema:name, dcterms:title, rdfs:label, mf:name], $(title)]
       - [[schema:description, dcterms:description, test:purpose], $(purpose)]
+      - [test:specificationReference, $(part of spec)~iri]
       - p: [dcterms:hasPart, test:informationResourceInput, rml-tc:rules]
         o:
           mapping: rules-dataset
