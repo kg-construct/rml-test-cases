@@ -6,6 +6,7 @@
 @prefix ql:         <http://semweb.mmlab.be/ns/ql#> .
 @prefix activity:   <http://example.com/activity/> .
 @prefix d2rq:       <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix sd:         <http://www.w3.org/ns/sparql-service-description#> .
 @base <http://example.com/base/> .
 
 <#InputSPARQL>
