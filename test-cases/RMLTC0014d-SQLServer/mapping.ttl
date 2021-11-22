@@ -22,7 +22,6 @@
         WHEN 'ENGINEER' THEN 'engineering'
       END) AS ROLE FROM EMP
     """ ;
-    rml:referenceFormulation ql:CSV
    ];
 
     rr:subjectMap [ rr:template "http://data.example.com/employee/{empno}" ];
