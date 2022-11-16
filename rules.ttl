@@ -1,1092 +1,1389 @@
-@prefix rr: <http://www.w3.org/ns/r2rml#>.
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix fnml: <http://semweb.mmlab.be/ns/fnml#>.
-@prefix fno: <http://w3id.org/function/ontology#>.
-@prefix rml: <http://semweb.mmlab.be/ns/rml#>.
-@prefix ql: <http://semweb.mmlab.be/ns/ql#>.
-@prefix : <http://mapping.example.com/>.
-@prefix ex: <http://example.com/>.
-@prefix rml-tc: <http://rml.io/ns/test-case/>.
-@prefix test: <http://www.w3.org/2006/03/test-description#>.
-@prefix rut: <http://rdfunit.aksw.org/ns/core#>.
-@prefix mf: <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#>.
-@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#>.
-@prefix idlab-fn: <http://example.com/idlab/function/>.
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix : <http://mapping.example.com/> .
+@prefix ex: <http://example.com/> .
+@prefix rml-tc: <http://rml.io/ns/test-case/> .
+@prefix test: <http://www.w3.org/2006/03/test-description#> .
+@prefix rut: <http://rdfunit.aksw.org/ns/core#> .
+@prefix mf: <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#> .
+@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
 
-:map_testcase_0 rml:logicalSource :source_0.
-:source_0 a rml:LogicalSource;
-    rml:source "metadata.csv";
-    rml:referenceFormulation ql:CSV.
-:map_testcase_0 a rr:TriplesMap;
-    rdfs:label "testcase".
-:s_0 a rr:SubjectMap.
-:map_testcase_0 rr:subjectMap :s_0.
-:s_0 rr:template "http://rml.io/test-case/{RML id}".
-:pom_0 a rr:PredicateObjectMap.
-:map_testcase_0 rr:predicateObjectMap :pom_0.
-:pm_0 a rr:PredicateMap.
-:pom_0 rr:predicateMap :pm_0.
-:pm_0 rr:constant rdf:type.
-:pom_0 rr:objectMap :om_0.
-:om_0 a rr:ObjectMap;
-    rr:constant "http://www.w3.org/ns/earl#TestCase";
-    rr:termType rr:IRI.
-:pom_0 rr:objectMap :om_1.
-:om_1 a rr:ObjectMap;
-    rr:constant "http://www.w3.org/2006/03/test-description#TestCase";
-    rr:termType rr:IRI.
-:pom_0 rr:objectMap :om_2.
-:om_2 a rr:ObjectMap;
-    rr:constant "http://rdfunit.aksw.org/ns/core#TestCase";
-    rr:termType rr:IRI.
-:pom_0 rr:objectMap :om_3.
-:om_3 a rr:ObjectMap;
-    rr:constant "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#ManifestEntry";
-    rr:termType rr:IRI.
-:pom_1 a rr:PredicateObjectMap.
-:map_testcase_0 rr:predicateObjectMap :pom_1.
-:pm_1 a rr:PredicateMap.
-:pom_1 rr:predicateMap :pm_1.
-:pm_1 rr:constant <http://purl.org/dc/terms/identifier>.
-:pom_1 rr:objectMap :om_4.
-:om_4 a rr:ObjectMap;
-    rml:reference "RML id";
-    rr:termType rr:Literal.
-:pom_2 a rr:PredicateObjectMap.
-:map_testcase_0 rr:predicateObjectMap :pom_2.
-:pm_2 a rr:PredicateMap.
-:pom_2 rr:predicateMap :pm_2.
-:pm_2 rr:constant <http://schema.org/name>.
-:pm_3 a rr:PredicateMap.
-:pom_2 rr:predicateMap :pm_3.
-:pm_3 rr:constant <http://purl.org/dc/terms/title>.
-:pm_4 a rr:PredicateMap.
-:pom_2 rr:predicateMap :pm_4.
-:pm_4 rr:constant rdfs:label.
-:pm_5 a rr:PredicateMap.
-:pom_2 rr:predicateMap :pm_5.
-:pm_5 rr:constant mf:name.
-:pom_2 rr:objectMap :om_5.
-:om_5 a rr:ObjectMap;
-    rml:reference "title";
-    rr:termType rr:Literal.
-:pom_3 a rr:PredicateObjectMap.
-:map_testcase_0 rr:predicateObjectMap :pom_3.
-:pm_6 a rr:PredicateMap.
-:pom_3 rr:predicateMap :pm_6.
-:pm_6 rr:constant <http://schema.org/description>.
-:pm_7 a rr:PredicateMap.
-:pom_3 rr:predicateMap :pm_7.
-:pm_7 rr:constant <http://purl.org/dc/terms/description>.
-:pm_8 a rr:PredicateMap.
-:pom_3 rr:predicateMap :pm_8.
-:pm_8 rr:constant test:purpose.
-:pom_3 rr:objectMap :om_6.
-:om_6 a rr:ObjectMap;
-    rml:reference "purpose";
-    rr:termType rr:Literal.
-:pom_4 a rr:PredicateObjectMap.
-:map_testcase_0 rr:predicateObjectMap :pom_4.
-:pm_9 a rr:PredicateMap.
-:pom_4 rr:predicateMap :pm_9.
-:pm_9 rr:constant test:specificationReference.
-:pom_4 rr:objectMap :om_7.
-:om_7 a rr:ObjectMap;
-    rml:reference "part of spec";
-    rr:termType rr:IRI.
-:pom_5 a rr:PredicateObjectMap.
-:map_testcase_0 rr:predicateObjectMap :pom_5.
-:pm_10 a rr:PredicateMap.
-:pom_5 rr:predicateMap :pm_10.
-:pm_10 rr:constant <http://purl.org/dc/terms/hasPart>.
-:pm_11 a rr:PredicateMap.
-:pom_5 rr:predicateMap :pm_11.
-:pm_11 rr:constant test:informationResourceInput.
-:pm_12 a rr:PredicateMap.
-:pom_5 rr:predicateMap :pm_12.
-:pm_12 rr:constant rml-tc:rules.
-:pom_5 rr:objectMap :om_8.
-:pom_6 a rr:PredicateObjectMap.
-:map_testcase_0 rr:predicateObjectMap :pom_6.
-:pm_13 a rr:PredicateMap.
-:pom_6 rr:predicateMap :pm_13.
-:pm_13 rr:constant <http://purl.org/dc/terms/hasPart>.
-:pm_14 a rr:PredicateMap.
-:pom_6 rr:predicateMap :pm_14.
-:pm_14 rr:constant test:expectedResults.
-:pm_15 a rr:PredicateMap.
-:pom_6 rr:predicateMap :pm_15.
-:pm_15 rr:constant mf:result.
-:pom_6 rr:objectMap :om_9.
-:pom_7 a rr:PredicateObjectMap.
-:map_testcase_0 rr:predicateObjectMap :pom_7.
-:pm_16 a rr:PredicateMap.
-:pom_7 rr:predicateMap :pm_16.
-:pm_16 rr:constant <http://purl.org/dc/terms/hasPart>.
-:pm_17 a rr:PredicateMap.
-:pom_7 rr:predicateMap :pm_17.
-:pm_17 rr:constant test:expectedResults.
-:pm_18 a rr:PredicateMap.
-:pom_7 rr:predicateMap :pm_18.
-:pm_18 rr:constant mf:result.
-:pom_7 rr:objectMap :om_10.
-:om_10 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
-    fnml:functionValue :fn_0.
-:fn_0 rml:logicalSource :source_0;
-    rr:predicateObjectMap :pomexec_0.
-:pomexec_0 rr:predicateMap :pmexec_0.
-:pmexec_0 rr:constant fno:executes.
-:pomexec_0 rr:objectMap :omexec_0.
-:omexec_0 rr:constant "http://example.com/idlab/function/trueCondition";
-    rr:termType rr:IRI.
-:fn_0 rr:predicateObjectMap :pom_8.
-:pom_8 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_19.
-:pm_19 a rr:PredicateMap;
-    rr:constant idlab-fn:strBoolean.
-:pom_8 rr:objectMap :om_11.
-:om_11 a rr:ObjectMap, fnml:FunctionTermMap;
-    fnml:functionValue :fn_1.
-:fn_1 rml:logicalSource :source_0;
-    rr:predicateObjectMap :pomexec_1.
-:pomexec_1 rr:predicateMap :pmexec_1.
-:pmexec_1 rr:constant fno:executes.
-:pomexec_1 rr:objectMap :omexec_1.
-:omexec_1 rr:constant "http://example.com/idlab/function/equal";
-    rr:termType rr:IRI.
-:fn_1 rr:predicateObjectMap :pom_9.
-:pom_9 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_20.
-:pm_20 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_9 rr:objectMap :om_12.
-:om_12 a rr:ObjectMap;
-    rml:reference "error expected?";
-    rr:termType rr:Literal.
-:fn_1 rr:predicateObjectMap :pom_10.
-:pom_10 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_21.
-:pm_21 a rr:PredicateMap;
-    rr:constant grel:valueParameter2.
-:pom_10 rr:objectMap :om_13.
-:om_13 a rr:ObjectMap;
-    rr:constant "true";
-    rr:termType rr:Literal.
-:fn_0 rr:predicateObjectMap :pom_11.
-:pom_11 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_22.
-:pm_22 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_11 rr:objectMap :om_14.
-:om_14 a rr:ObjectMap;
-    rr:constant "http://rml.io/ns/test-case/InvalidRulesError";
-    rr:termType rr:Literal.
-:pom_12 a rr:PredicateObjectMap.
-:map_testcase_0 rr:predicateObjectMap :pom_12.
-:pm_23 a rr:PredicateMap.
-:pom_12 rr:predicateMap :pm_23.
-:pm_23 rr:constant <http://purl.org/dc/terms/hasPart>.
-:pm_24 a rr:PredicateMap.
-:pom_12 rr:predicateMap :pm_24.
-:pm_24 rr:constant test:informationResourceInput.
-:pom_12 rr:objectMap :om_15, :om_16, :om_17.
-:map_rules-dataset_0 rml:logicalSource :source_1.
-:source_1 a rml:LogicalSource;
-    rml:source "metadata.csv";
-    rml:referenceFormulation ql:CSV.
-:map_rules-dataset_0 a rr:TriplesMap;
-    rdfs:label "rules-dataset".
-:s_1 a rr:SubjectMap.
-:map_rules-dataset_0 rr:subjectMap :s_1.
-:s_1 rr:template "http://rml.io/test-case/{RML id}/rules".
-:pom_13 a rr:PredicateObjectMap.
-:map_rules-dataset_0 rr:predicateObjectMap :pom_13.
-:pm_25 a rr:PredicateMap.
-:pom_13 rr:predicateMap :pm_25.
-:pm_25 rr:constant rdf:type.
-:pom_13 rr:objectMap :om_18.
-:om_18 a rr:ObjectMap;
-    rr:constant "http://www.w3.org/ns/dcat#Dataset";
-    rr:termType rr:IRI.
-:pom_14 a rr:PredicateObjectMap.
-:map_rules-dataset_0 rr:predicateObjectMap :pom_14.
-:pm_26 a rr:PredicateMap.
-:pom_14 rr:predicateMap :pm_26.
-:pm_26 rr:constant <http://www.w3.org/ns/dcat#keyword>.
-:pom_14 rr:objectMap :om_19.
-:om_19 a rr:ObjectMap;
-    rr:constant "rml";
-    rr:termType rr:Literal.
-:pom_14 rr:objectMap :om_20.
-:om_20 a rr:ObjectMap;
-    rr:constant "rules";
-    rr:termType rr:Literal.
-:pom_14 rr:objectMap :om_21.
-:om_21 a rr:ObjectMap;
-    rr:constant "mapping";
-    rr:termType rr:Literal.
-:pom_15 a rr:PredicateObjectMap.
-:map_rules-dataset_0 rr:predicateObjectMap :pom_15.
-:pm_27 a rr:PredicateMap.
-:pom_15 rr:predicateMap :pm_27.
-:pm_27 rr:constant <http://www.w3.org/ns/dcat#distribution>.
-:pom_15 rr:objectMap :om_22.
-:map_rules-distribution_0 rml:logicalSource :source_2.
-:source_2 a rml:LogicalSource;
-    rml:source "metadata.csv";
-    rml:referenceFormulation ql:CSV.
-:map_rules-distribution_0 a rr:TriplesMap;
-    rdfs:label "rules-distribution".
-:s_2 a rr:SubjectMap.
-:map_rules-distribution_0 rr:subjectMap :s_2.
-:s_2 rr:template "http://rml.io/test-case/{RML id}/rules/distribution".
-:pom_16 a rr:PredicateObjectMap.
-:map_rules-distribution_0 rr:predicateObjectMap :pom_16.
-:pm_28 a rr:PredicateMap.
-:pom_16 rr:predicateMap :pm_28.
-:pm_28 rr:constant rdf:type.
-:pom_16 rr:objectMap :om_23.
-:om_23 a rr:ObjectMap;
-    rr:constant "http://www.w3.org/ns/dcat#Distribution";
-    rr:termType rr:IRI.
-:pom_17 a rr:PredicateObjectMap.
-:map_rules-distribution_0 rr:predicateObjectMap :pom_17.
-:pm_29 a rr:PredicateMap.
-:pom_17 rr:predicateMap :pm_29.
-:pm_29 rr:constant <http://schema.org/name>.
-:pm_30 a rr:PredicateMap.
-:pom_17 rr:predicateMap :pm_30.
-:pm_30 rr:constant <http://purl.org/dc/terms/title>.
-:pm_31 a rr:PredicateMap.
-:pom_17 rr:predicateMap :pm_31.
-:pm_31 rr:constant rdfs:label.
-:pom_17 rr:objectMap :om_24.
-:om_24 a rr:ObjectMap;
-    rr:template "RML rules in Turtle format of test case with id {RML id}";
-    rr:termType rr:Literal.
-:pom_18 a rr:PredicateObjectMap.
-:map_rules-distribution_0 rr:predicateObjectMap :pom_18.
-:pm_32 a rr:PredicateMap.
-:pom_18 rr:predicateMap :pm_32.
-:pm_32 rr:constant <http://www.w3.org/ns/dcat#downloadUrl>.
-:pom_18 rr:objectMap :om_25.
-:om_25 a rr:ObjectMap;
-    rr:template "https://raw.githubusercontent.com/RMLio/rml-test-cases/master/test-cases/{RML id}/mapping.ttl";
-    rr:termType rr:IRI.
-:pom_19 a rr:PredicateObjectMap.
-:map_rules-distribution_0 rr:predicateObjectMap :pom_19.
-:pm_33 a rr:PredicateMap.
-:pom_19 rr:predicateMap :pm_33.
-:pm_33 rr:constant <http://www.w3.org/ns/dcat#mediaType>.
-:pom_19 rr:objectMap :om_26.
-:om_26 a rr:ObjectMap;
-    rr:constant "text/turtle";
-    rr:termType rr:Literal.
-:map_output-dataset_0 rml:logicalSource :source_3.
-:source_3 a rml:LogicalSource;
-    rml:source "metadata.csv";
-    rml:referenceFormulation ql:CSV.
-:map_output-dataset_0 a rr:TriplesMap;
-    rdfs:label "output-dataset".
-:s_3 a rr:SubjectMap.
-:map_output-dataset_0 rr:subjectMap :s_3.
-:s_3 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
-    fnml:functionValue :fn_2.
-:fn_2 rml:logicalSource :source_3;
-    rr:predicateObjectMap :pomexec_2.
-:pomexec_2 rr:predicateMap :pmexec_2.
-:pmexec_2 rr:constant fno:executes.
-:pomexec_2 rr:objectMap :omexec_2.
-:omexec_2 rr:constant "http://example.com/idlab/function/trueCondition";
-    rr:termType rr:IRI.
-:fn_2 rr:predicateObjectMap :pom_20.
-:pom_20 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_34.
-:pm_34 a rr:PredicateMap;
-    rr:constant idlab-fn:strBoolean.
-:pom_20 rr:objectMap :om_27.
-:om_27 a rr:ObjectMap, fnml:FunctionTermMap;
-    fnml:functionValue :fn_3.
-:fn_3 rml:logicalSource :source_3;
-    rr:predicateObjectMap :pomexec_3.
-:pomexec_3 rr:predicateMap :pmexec_3.
-:pmexec_3 rr:constant fno:executes.
-:pomexec_3 rr:objectMap :omexec_3.
-:omexec_3 rr:constant "http://example.com/idlab/function/equal";
-    rr:termType rr:IRI.
-:fn_3 rr:predicateObjectMap :pom_21.
-:pom_21 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_35.
-:pm_35 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_21 rr:objectMap :om_28.
-:om_28 a rr:ObjectMap;
-    rr:constant "false";
-    rr:termType rr:Literal.
-:fn_3 rr:predicateObjectMap :pom_22.
-:pom_22 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_36.
-:pm_36 a rr:PredicateMap;
-    rr:constant grel:valueParameter2.
-:pom_22 rr:objectMap :om_29.
-:om_29 a rr:ObjectMap;
-    rml:reference "error expected?";
-    rr:termType rr:Literal.
-:fn_2 rr:predicateObjectMap :pom_23.
-:pom_23 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_37.
-:pm_37 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_23 rr:objectMap :om_30.
-:om_30 a rr:ObjectMap;
-    rr:template "http://rml.io/test-case/{RML id}/output";
-    rr:termType rr:Literal.
-:pom_24 a rr:PredicateObjectMap.
-:map_output-dataset_0 rr:predicateObjectMap :pom_24.
-:pm_38 a rr:PredicateMap.
-:pom_24 rr:predicateMap :pm_38.
-:pm_38 rr:constant rdf:type.
-:pom_24 rr:objectMap :om_31.
-:om_31 a rr:ObjectMap;
-    rr:constant "http://www.w3.org/ns/dcat#Dataset";
-    rr:termType rr:IRI.
-:pom_25 a rr:PredicateObjectMap.
-:map_output-dataset_0 rr:predicateObjectMap :pom_25.
-:pm_39 a rr:PredicateMap.
-:pom_25 rr:predicateMap :pm_39.
-:pm_39 rr:constant <http://www.w3.org/ns/dcat#distribution>.
-:pom_25 rr:objectMap :om_32.
-:map_output-distribution_0 rml:logicalSource :source_4.
-:source_4 a rml:LogicalSource;
-    rml:source "metadata.csv";
-    rml:referenceFormulation ql:CSV.
-:map_output-distribution_0 a rr:TriplesMap;
-    rdfs:label "output-distribution".
-:s_4 a rr:SubjectMap.
-:map_output-distribution_0 rr:subjectMap :s_4.
-:s_4 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
-    fnml:functionValue :fn_4.
-:fn_4 rml:logicalSource :source_4;
-    rr:predicateObjectMap :pomexec_4.
-:pomexec_4 rr:predicateMap :pmexec_4.
-:pmexec_4 rr:constant fno:executes.
-:pomexec_4 rr:objectMap :omexec_4.
-:omexec_4 rr:constant "http://example.com/idlab/function/trueCondition";
-    rr:termType rr:IRI.
-:fn_4 rr:predicateObjectMap :pom_26.
-:pom_26 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_40.
-:pm_40 a rr:PredicateMap;
-    rr:constant idlab-fn:strBoolean.
-:pom_26 rr:objectMap :om_33.
-:om_33 a rr:ObjectMap, fnml:FunctionTermMap;
-    fnml:functionValue :fn_5.
-:fn_5 rml:logicalSource :source_4;
-    rr:predicateObjectMap :pomexec_5.
-:pomexec_5 rr:predicateMap :pmexec_5.
-:pmexec_5 rr:constant fno:executes.
-:pomexec_5 rr:objectMap :omexec_5.
-:omexec_5 rr:constant "http://example.com/idlab/function/equal";
-    rr:termType rr:IRI.
-:fn_5 rr:predicateObjectMap :pom_27.
-:pom_27 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_41.
-:pm_41 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_27 rr:objectMap :om_34.
-:om_34 a rr:ObjectMap;
-    rr:constant "false";
-    rr:termType rr:Literal.
-:fn_5 rr:predicateObjectMap :pom_28.
-:pom_28 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_42.
-:pm_42 a rr:PredicateMap;
-    rr:constant grel:valueParameter2.
-:pom_28 rr:objectMap :om_35.
-:om_35 a rr:ObjectMap;
-    rml:reference "error expected?";
-    rr:termType rr:Literal.
-:fn_4 rr:predicateObjectMap :pom_29.
-:pom_29 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_43.
-:pm_43 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_29 rr:objectMap :om_36.
-:om_36 a rr:ObjectMap;
-    rr:template "http://rml.io/test-case/{RML id}/output/distribution";
-    rr:termType rr:Literal.
-:pom_30 a rr:PredicateObjectMap.
-:map_output-distribution_0 rr:predicateObjectMap :pom_30.
-:pm_44 a rr:PredicateMap.
-:pom_30 rr:predicateMap :pm_44.
-:pm_44 rr:constant rdf:type.
-:pom_30 rr:objectMap :om_37.
-:om_37 a rr:ObjectMap;
-    rr:constant "http://www.w3.org/ns/dcat#Distribution";
-    rr:termType rr:IRI.
-:pom_31 a rr:PredicateObjectMap.
-:map_output-distribution_0 rr:predicateObjectMap :pom_31.
-:pm_45 a rr:PredicateMap.
-:pom_31 rr:predicateMap :pm_45.
-:pm_45 rr:constant <http://schema.org/name>.
-:pm_46 a rr:PredicateMap.
-:pom_31 rr:predicateMap :pm_46.
-:pm_46 rr:constant <http://purl.org/dc/terms/title>.
-:pm_47 a rr:PredicateMap.
-:pom_31 rr:predicateMap :pm_47.
-:pm_47 rr:constant rdfs:label.
-:pom_31 rr:objectMap :om_38.
-:om_38 a rr:ObjectMap;
-    rr:template "Expected RDF output of test case with id {RML id}";
-    rr:termType rr:Literal.
-:pom_32 a rr:PredicateObjectMap.
-:map_output-distribution_0 rr:predicateObjectMap :pom_32.
-:pm_48 a rr:PredicateMap.
-:pom_32 rr:predicateMap :pm_48.
-:pm_48 rr:constant <http://www.w3.org/ns/dcat#downloadUrl>.
-:pom_32 rr:objectMap :om_39.
-:om_39 a rr:ObjectMap;
-    rr:template "https://raw.githubusercontent.com/RMLio/rml-test-cases/master/test-cases/{RML id}/output.nq";
-    rr:termType rr:IRI.
-:pom_33 a rr:PredicateObjectMap.
-:map_output-distribution_0 rr:predicateObjectMap :pom_33.
-:pm_49 a rr:PredicateMap.
-:pom_33 rr:predicateMap :pm_49.
-:pm_49 rr:constant <http://www.w3.org/ns/dcat#mediaType>.
-:pom_33 rr:objectMap :om_40.
-:om_40 a rr:ObjectMap;
-    rr:constant "application/n-quads";
-    rr:termType rr:Literal.
-:map_input-dataset-1_0 rml:logicalSource :source_5.
-:source_5 a rml:LogicalSource;
-    rml:source "metadata.csv";
-    rml:referenceFormulation ql:CSV.
-:map_input-dataset-1_0 a rr:TriplesMap;
-    rdfs:label "input-dataset-1".
-:s_5 a rr:SubjectMap.
-:map_input-dataset-1_0 rr:subjectMap :s_5.
-:s_5 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
-    fnml:functionValue :fn_6.
-:fn_6 rml:logicalSource :source_5;
-    rr:predicateObjectMap :pomexec_6.
-:pomexec_6 rr:predicateMap :pmexec_6.
-:pmexec_6 rr:constant fno:executes.
-:pomexec_6 rr:objectMap :omexec_6.
-:omexec_6 rr:constant "http://example.com/idlab/function/trueCondition";
-    rr:termType rr:IRI.
-:fn_6 rr:predicateObjectMap :pom_34.
-:pom_34 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_50.
-:pm_50 a rr:PredicateMap;
-    rr:constant idlab-fn:strBoolean.
-:pom_34 rr:objectMap :om_41.
-:om_41 a rr:ObjectMap, fnml:FunctionTermMap;
-    fnml:functionValue :fn_7.
-:fn_7 rml:logicalSource :source_5;
-    rr:predicateObjectMap :pomexec_7.
-:pomexec_7 rr:predicateMap :pmexec_7.
-:pmexec_7 rr:constant fno:executes.
-:pomexec_7 rr:objectMap :omexec_7.
-:omexec_7 rr:constant "http://example.com/idlab/function/notEqual";
-    rr:termType rr:IRI.
-:fn_7 rr:predicateObjectMap :pom_35.
-:pom_35 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_51.
-:pm_51 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_35 rr:objectMap :om_42.
-:om_42 a rr:ObjectMap;
-    rr:constant "";
-    rr:termType rr:Literal.
-:fn_7 rr:predicateObjectMap :pom_36.
-:pom_36 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_52.
-:pm_52 a rr:PredicateMap;
-    rr:constant grel:valueParameter2.
-:pom_36 rr:objectMap :om_43.
-:om_43 a rr:ObjectMap;
-    rml:reference "input file 1";
-    rr:termType rr:Literal.
-:fn_6 rr:predicateObjectMap :pom_37.
-:pom_37 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_53.
-:pm_53 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_37 rr:objectMap :om_44.
-:om_44 a rr:ObjectMap;
-    rr:template "http://rml.io/test-case/{RML id}/input1";
-    rr:termType rr:Literal.
-:pom_38 a rr:PredicateObjectMap.
-:map_input-dataset-1_0 rr:predicateObjectMap :pom_38.
-:pm_54 a rr:PredicateMap.
-:pom_38 rr:predicateMap :pm_54.
-:pm_54 rr:constant rdf:type.
-:pom_38 rr:objectMap :om_45.
-:om_45 a rr:ObjectMap;
-    rr:constant "http://www.w3.org/ns/dcat#Dataset";
-    rr:termType rr:IRI.
-:pom_39 a rr:PredicateObjectMap.
-:map_input-dataset-1_0 rr:predicateObjectMap :pom_39.
-:pm_55 a rr:PredicateMap.
-:pom_39 rr:predicateMap :pm_55.
-:pm_55 rr:constant <http://www.w3.org/ns/dcat#distribution>.
-:pom_39 rr:objectMap :om_46.
-:map_input-distribution-1_0 rml:logicalSource :source_6.
-:source_6 a rml:LogicalSource;
-    rml:source "metadata.csv";
-    rml:referenceFormulation ql:CSV.
-:map_input-distribution-1_0 a rr:TriplesMap;
-    rdfs:label "input-distribution-1".
-:s_6 a rr:SubjectMap.
-:map_input-distribution-1_0 rr:subjectMap :s_6.
-:s_6 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
-    fnml:functionValue :fn_8.
-:fn_8 rml:logicalSource :source_6;
-    rr:predicateObjectMap :pomexec_8.
-:pomexec_8 rr:predicateMap :pmexec_8.
-:pmexec_8 rr:constant fno:executes.
-:pomexec_8 rr:objectMap :omexec_8.
-:omexec_8 rr:constant "http://example.com/idlab/function/trueCondition";
-    rr:termType rr:IRI.
-:fn_8 rr:predicateObjectMap :pom_40.
-:pom_40 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_56.
-:pm_56 a rr:PredicateMap;
-    rr:constant idlab-fn:strBoolean.
-:pom_40 rr:objectMap :om_47.
-:om_47 a rr:ObjectMap, fnml:FunctionTermMap;
-    fnml:functionValue :fn_9.
-:fn_9 rml:logicalSource :source_6;
-    rr:predicateObjectMap :pomexec_9.
-:pomexec_9 rr:predicateMap :pmexec_9.
-:pmexec_9 rr:constant fno:executes.
-:pomexec_9 rr:objectMap :omexec_9.
-:omexec_9 rr:constant "http://example.com/idlab/function/notEqual";
-    rr:termType rr:IRI.
-:fn_9 rr:predicateObjectMap :pom_41.
-:pom_41 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_57.
-:pm_57 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_41 rr:objectMap :om_48.
-:om_48 a rr:ObjectMap;
-    rr:constant "";
-    rr:termType rr:Literal.
-:fn_9 rr:predicateObjectMap :pom_42.
-:pom_42 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_58.
-:pm_58 a rr:PredicateMap;
-    rr:constant grel:valueParameter2.
-:pom_42 rr:objectMap :om_49.
-:om_49 a rr:ObjectMap;
-    rml:reference "input file 1";
-    rr:termType rr:Literal.
-:fn_8 rr:predicateObjectMap :pom_43.
-:pom_43 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_59.
-:pm_59 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_43 rr:objectMap :om_50.
-:om_50 a rr:ObjectMap;
-    rr:template "http://rml.io/test-case/{RML id}/input1/distribution";
-    rr:termType rr:Literal.
-:pom_44 a rr:PredicateObjectMap.
-:map_input-distribution-1_0 rr:predicateObjectMap :pom_44.
-:pm_60 a rr:PredicateMap.
-:pom_44 rr:predicateMap :pm_60.
-:pm_60 rr:constant rdf:type.
-:pom_44 rr:objectMap :om_51.
-:om_51 a rr:ObjectMap;
-    rr:constant "http://www.w3.org/ns/dcat#Distribution";
-    rr:termType rr:IRI.
-:pom_45 a rr:PredicateObjectMap.
-:map_input-distribution-1_0 rr:predicateObjectMap :pom_45.
-:pm_61 a rr:PredicateMap.
-:pom_45 rr:predicateMap :pm_61.
-:pm_61 rr:constant <http://schema.org/name>.
-:pm_62 a rr:PredicateMap.
-:pom_45 rr:predicateMap :pm_62.
-:pm_62 rr:constant <http://purl.org/dc/terms/title>.
-:pm_63 a rr:PredicateMap.
-:pom_45 rr:predicateMap :pm_63.
-:pm_63 rr:constant rdfs:label.
-:pom_45 rr:objectMap :om_52.
-:om_52 a rr:ObjectMap;
-    rr:template "An input file of test case with id {RML id}";
-    rr:termType rr:Literal.
-:pom_46 a rr:PredicateObjectMap.
-:map_input-distribution-1_0 rr:predicateObjectMap :pom_46.
-:pm_64 a rr:PredicateMap.
-:pom_46 rr:predicateMap :pm_64.
-:pm_64 rr:constant <http://www.w3.org/ns/dcat#downloadUrl>.
-:pom_46 rr:objectMap :om_53.
-:om_53 a rr:ObjectMap;
-    rr:template "https://raw.githubusercontent.com/RMLio/rml-test-cases/master/test-cases/{RML id}/{input file 1}";
-    rr:termType rr:IRI.
-:pom_47 a rr:PredicateObjectMap.
-:map_input-distribution-1_0 rr:predicateObjectMap :pom_47.
-:pm_65 a rr:PredicateMap.
-:pom_47 rr:predicateMap :pm_65.
-:pm_65 rr:constant <http://www.w3.org/ns/dcat#mediaType>.
-:pom_47 rr:objectMap :om_54.
-:om_54 a fnml:FunctionTermMap;
-    rr:termType rr:Literal;
-    fnml:functionValue :fn_10.
-:fn_10 rml:logicalSource :source_6;
-    rr:predicateObjectMap :pomexec_10.
-:pomexec_10 rr:predicateMap :pmexec_10.
-:pmexec_10 rr:constant fno:executes.
-:pomexec_10 rr:objectMap :omexec_10.
-:omexec_10 rr:constant "http://example.com/idlab/function/getMIMEType";
-    rr:termType rr:IRI.
-:fn_10 rr:predicateObjectMap :pom_48.
-:pom_48 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_66.
-:pm_66 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_48 rr:objectMap :om_55.
-:om_55 a rr:ObjectMap;
-    rml:reference "input file 1";
-    rr:termType rr:Literal.
-:map_input-dataset-2_0 rml:logicalSource :source_7.
-:source_7 a rml:LogicalSource;
-    rml:source "metadata.csv";
-    rml:referenceFormulation ql:CSV.
-:map_input-dataset-2_0 a rr:TriplesMap;
-    rdfs:label "input-dataset-2".
-:s_7 a rr:SubjectMap.
-:map_input-dataset-2_0 rr:subjectMap :s_7.
-:s_7 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
-    fnml:functionValue :fn_11.
-:fn_11 rml:logicalSource :source_7;
-    rr:predicateObjectMap :pomexec_11.
-:pomexec_11 rr:predicateMap :pmexec_11.
-:pmexec_11 rr:constant fno:executes.
-:pomexec_11 rr:objectMap :omexec_11.
-:omexec_11 rr:constant "http://example.com/idlab/function/trueCondition";
-    rr:termType rr:IRI.
-:fn_11 rr:predicateObjectMap :pom_49.
-:pom_49 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_67.
-:pm_67 a rr:PredicateMap;
-    rr:constant idlab-fn:strBoolean.
-:pom_49 rr:objectMap :om_56.
-:om_56 a rr:ObjectMap, fnml:FunctionTermMap;
-    fnml:functionValue :fn_12.
-:fn_12 rml:logicalSource :source_7;
-    rr:predicateObjectMap :pomexec_12.
-:pomexec_12 rr:predicateMap :pmexec_12.
-:pmexec_12 rr:constant fno:executes.
-:pomexec_12 rr:objectMap :omexec_12.
-:omexec_12 rr:constant "http://example.com/idlab/function/notEqual";
-    rr:termType rr:IRI.
-:fn_12 rr:predicateObjectMap :pom_50.
-:pom_50 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_68.
-:pm_68 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_50 rr:objectMap :om_57.
-:om_57 a rr:ObjectMap;
-    rr:constant "";
-    rr:termType rr:Literal.
-:fn_12 rr:predicateObjectMap :pom_51.
-:pom_51 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_69.
-:pm_69 a rr:PredicateMap;
-    rr:constant grel:valueParameter2.
-:pom_51 rr:objectMap :om_58.
-:om_58 a rr:ObjectMap;
-    rml:reference "input file 2";
-    rr:termType rr:Literal.
-:fn_11 rr:predicateObjectMap :pom_52.
-:pom_52 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_70.
-:pm_70 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_52 rr:objectMap :om_59.
-:om_59 a rr:ObjectMap;
-    rr:template "http://rml.io/test-case/{RML id}/input2";
-    rr:termType rr:Literal.
-:pom_53 a rr:PredicateObjectMap.
-:map_input-dataset-2_0 rr:predicateObjectMap :pom_53.
-:pm_71 a rr:PredicateMap.
-:pom_53 rr:predicateMap :pm_71.
-:pm_71 rr:constant rdf:type.
-:pom_53 rr:objectMap :om_60.
-:om_60 a rr:ObjectMap;
-    rr:constant "http://www.w3.org/ns/dcat#Dataset";
-    rr:termType rr:IRI.
-:pom_54 a rr:PredicateObjectMap.
-:map_input-dataset-2_0 rr:predicateObjectMap :pom_54.
-:pm_72 a rr:PredicateMap.
-:pom_54 rr:predicateMap :pm_72.
-:pm_72 rr:constant <http://www.w3.org/ns/dcat#distribution>.
-:pom_54 rr:objectMap :om_61.
-:map_input-distribution-2_0 rml:logicalSource :source_8.
-:source_8 a rml:LogicalSource;
-    rml:source "metadata.csv";
-    rml:referenceFormulation ql:CSV.
-:map_input-distribution-2_0 a rr:TriplesMap;
-    rdfs:label "input-distribution-2".
-:s_8 a rr:SubjectMap.
-:map_input-distribution-2_0 rr:subjectMap :s_8.
-:s_8 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
-    fnml:functionValue :fn_13.
-:fn_13 rml:logicalSource :source_8;
-    rr:predicateObjectMap :pomexec_13.
-:pomexec_13 rr:predicateMap :pmexec_13.
-:pmexec_13 rr:constant fno:executes.
-:pomexec_13 rr:objectMap :omexec_13.
-:omexec_13 rr:constant "http://example.com/idlab/function/trueCondition";
-    rr:termType rr:IRI.
-:fn_13 rr:predicateObjectMap :pom_55.
-:pom_55 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_73.
-:pm_73 a rr:PredicateMap;
-    rr:constant idlab-fn:strBoolean.
-:pom_55 rr:objectMap :om_62.
-:om_62 a rr:ObjectMap, fnml:FunctionTermMap;
-    fnml:functionValue :fn_14.
-:fn_14 rml:logicalSource :source_8;
-    rr:predicateObjectMap :pomexec_14.
-:pomexec_14 rr:predicateMap :pmexec_14.
-:pmexec_14 rr:constant fno:executes.
-:pomexec_14 rr:objectMap :omexec_14.
-:omexec_14 rr:constant "http://example.com/idlab/function/notEqual";
-    rr:termType rr:IRI.
-:fn_14 rr:predicateObjectMap :pom_56.
-:pom_56 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_74.
-:pm_74 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_56 rr:objectMap :om_63.
-:om_63 a rr:ObjectMap;
-    rr:constant "";
-    rr:termType rr:Literal.
-:fn_14 rr:predicateObjectMap :pom_57.
-:pom_57 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_75.
-:pm_75 a rr:PredicateMap;
-    rr:constant grel:valueParameter2.
-:pom_57 rr:objectMap :om_64.
-:om_64 a rr:ObjectMap;
-    rml:reference "input file 2";
-    rr:termType rr:Literal.
-:fn_13 rr:predicateObjectMap :pom_58.
-:pom_58 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_76.
-:pm_76 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_58 rr:objectMap :om_65.
-:om_65 a rr:ObjectMap;
-    rr:template "http://rml.io/test-case/{RML id}/input2/distribution";
-    rr:termType rr:Literal.
-:pom_59 a rr:PredicateObjectMap.
-:map_input-distribution-2_0 rr:predicateObjectMap :pom_59.
-:pm_77 a rr:PredicateMap.
-:pom_59 rr:predicateMap :pm_77.
-:pm_77 rr:constant rdf:type.
-:pom_59 rr:objectMap :om_66.
-:om_66 a rr:ObjectMap;
-    rr:constant "http://www.w3.org/ns/dcat#Distribution";
-    rr:termType rr:IRI.
-:pom_60 a rr:PredicateObjectMap.
-:map_input-distribution-2_0 rr:predicateObjectMap :pom_60.
-:pm_78 a rr:PredicateMap.
-:pom_60 rr:predicateMap :pm_78.
-:pm_78 rr:constant <http://schema.org/name>.
-:pm_79 a rr:PredicateMap.
-:pom_60 rr:predicateMap :pm_79.
-:pm_79 rr:constant <http://purl.org/dc/terms/title>.
-:pm_80 a rr:PredicateMap.
-:pom_60 rr:predicateMap :pm_80.
-:pm_80 rr:constant rdfs:label.
-:pom_60 rr:objectMap :om_67.
-:om_67 a rr:ObjectMap;
-    rr:template "An input file of test case with id {RML id}";
-    rr:termType rr:Literal.
-:pom_61 a rr:PredicateObjectMap.
-:map_input-distribution-2_0 rr:predicateObjectMap :pom_61.
-:pm_81 a rr:PredicateMap.
-:pom_61 rr:predicateMap :pm_81.
-:pm_81 rr:constant <http://www.w3.org/ns/dcat#downloadUrl>.
-:pom_61 rr:objectMap :om_68.
-:om_68 a rr:ObjectMap;
-    rr:template "https://raw.githubusercontent.com/RMLio/rml-test-cases/master/test-cases/{RML id}/{input file 2}";
-    rr:termType rr:IRI.
-:pom_62 a rr:PredicateObjectMap.
-:map_input-distribution-2_0 rr:predicateObjectMap :pom_62.
-:pm_82 a rr:PredicateMap.
-:pom_62 rr:predicateMap :pm_82.
-:pm_82 rr:constant <http://www.w3.org/ns/dcat#mediaType>.
-:pom_62 rr:objectMap :om_69.
-:om_69 a fnml:FunctionTermMap;
-    rr:termType rr:Literal;
-    fnml:functionValue :fn_15.
-:fn_15 rml:logicalSource :source_8;
-    rr:predicateObjectMap :pomexec_15.
-:pomexec_15 rr:predicateMap :pmexec_15.
-:pmexec_15 rr:constant fno:executes.
-:pomexec_15 rr:objectMap :omexec_15.
-:omexec_15 rr:constant "http://example.com/idlab/function/getMIMEType";
-    rr:termType rr:IRI.
-:fn_15 rr:predicateObjectMap :pom_63.
-:pom_63 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_83.
-:pm_83 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_63 rr:objectMap :om_70.
-:om_70 a rr:ObjectMap;
-    rml:reference "input file 2";
-    rr:termType rr:Literal.
-:map_input-dataset-3_0 rml:logicalSource :source_9.
-:source_9 a rml:LogicalSource;
-    rml:source "metadata.csv";
-    rml:referenceFormulation ql:CSV.
-:map_input-dataset-3_0 a rr:TriplesMap;
-    rdfs:label "input-dataset-3".
-:s_9 a rr:SubjectMap.
-:map_input-dataset-3_0 rr:subjectMap :s_9.
-:s_9 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
-    fnml:functionValue :fn_16.
-:fn_16 rml:logicalSource :source_9;
-    rr:predicateObjectMap :pomexec_16.
-:pomexec_16 rr:predicateMap :pmexec_16.
-:pmexec_16 rr:constant fno:executes.
-:pomexec_16 rr:objectMap :omexec_16.
-:omexec_16 rr:constant "http://example.com/idlab/function/trueCondition";
-    rr:termType rr:IRI.
-:fn_16 rr:predicateObjectMap :pom_64.
-:pom_64 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_84.
-:pm_84 a rr:PredicateMap;
-    rr:constant idlab-fn:strBoolean.
-:pom_64 rr:objectMap :om_71.
-:om_71 a rr:ObjectMap, fnml:FunctionTermMap;
-    fnml:functionValue :fn_17.
-:fn_17 rml:logicalSource :source_9;
-    rr:predicateObjectMap :pomexec_17.
-:pomexec_17 rr:predicateMap :pmexec_17.
-:pmexec_17 rr:constant fno:executes.
-:pomexec_17 rr:objectMap :omexec_17.
-:omexec_17 rr:constant "http://example.com/idlab/function/notEqual";
-    rr:termType rr:IRI.
-:fn_17 rr:predicateObjectMap :pom_65.
-:pom_65 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_85.
-:pm_85 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_65 rr:objectMap :om_72.
-:om_72 a rr:ObjectMap;
-    rr:constant "";
-    rr:termType rr:Literal.
-:fn_17 rr:predicateObjectMap :pom_66.
-:pom_66 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_86.
-:pm_86 a rr:PredicateMap;
-    rr:constant grel:valueParameter2.
-:pom_66 rr:objectMap :om_73.
-:om_73 a rr:ObjectMap;
-    rml:reference "input file 3";
-    rr:termType rr:Literal.
-:fn_16 rr:predicateObjectMap :pom_67.
-:pom_67 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_87.
-:pm_87 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_67 rr:objectMap :om_74.
-:om_74 a rr:ObjectMap;
-    rr:template "http://rml.io/test-case/{RML id}/input3";
-    rr:termType rr:Literal.
-:pom_68 a rr:PredicateObjectMap.
-:map_input-dataset-3_0 rr:predicateObjectMap :pom_68.
-:pm_88 a rr:PredicateMap.
-:pom_68 rr:predicateMap :pm_88.
-:pm_88 rr:constant rdf:type.
-:pom_68 rr:objectMap :om_75.
-:om_75 a rr:ObjectMap;
-    rr:constant "http://www.w3.org/ns/dcat#Dataset";
-    rr:termType rr:IRI.
-:pom_69 a rr:PredicateObjectMap.
-:map_input-dataset-3_0 rr:predicateObjectMap :pom_69.
-:pm_89 a rr:PredicateMap.
-:pom_69 rr:predicateMap :pm_89.
-:pm_89 rr:constant <http://www.w3.org/ns/dcat#distribution>.
-:pom_69 rr:objectMap :om_76.
-:map_input-distribution-3_0 rml:logicalSource :source_10.
-:source_10 a rml:LogicalSource;
-    rml:source "metadata.csv";
-    rml:referenceFormulation ql:CSV.
-:map_input-distribution-3_0 a rr:TriplesMap;
-    rdfs:label "input-distribution-3".
-:s_10 a rr:SubjectMap.
-:map_input-distribution-3_0 rr:subjectMap :s_10.
-:s_10 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
-    fnml:functionValue :fn_18.
-:fn_18 rml:logicalSource :source_10;
-    rr:predicateObjectMap :pomexec_18.
-:pomexec_18 rr:predicateMap :pmexec_18.
-:pmexec_18 rr:constant fno:executes.
-:pomexec_18 rr:objectMap :omexec_18.
-:omexec_18 rr:constant "http://example.com/idlab/function/trueCondition";
-    rr:termType rr:IRI.
-:fn_18 rr:predicateObjectMap :pom_70.
-:pom_70 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_90.
-:pm_90 a rr:PredicateMap;
-    rr:constant idlab-fn:strBoolean.
-:pom_70 rr:objectMap :om_77.
-:om_77 a rr:ObjectMap, fnml:FunctionTermMap;
-    fnml:functionValue :fn_19.
-:fn_19 rml:logicalSource :source_10;
-    rr:predicateObjectMap :pomexec_19.
-:pomexec_19 rr:predicateMap :pmexec_19.
-:pmexec_19 rr:constant fno:executes.
-:pomexec_19 rr:objectMap :omexec_19.
-:omexec_19 rr:constant "http://example.com/idlab/function/notEqual";
-    rr:termType rr:IRI.
-:fn_19 rr:predicateObjectMap :pom_71.
-:pom_71 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_91.
-:pm_91 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_71 rr:objectMap :om_78.
-:om_78 a rr:ObjectMap;
-    rr:constant "";
-    rr:termType rr:Literal.
-:fn_19 rr:predicateObjectMap :pom_72.
-:pom_72 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_92.
-:pm_92 a rr:PredicateMap;
-    rr:constant grel:valueParameter2.
-:pom_72 rr:objectMap :om_79.
-:om_79 a rr:ObjectMap;
-    rml:reference "input file 3";
-    rr:termType rr:Literal.
-:fn_18 rr:predicateObjectMap :pom_73.
-:pom_73 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_93.
-:pm_93 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_73 rr:objectMap :om_80.
-:om_80 a rr:ObjectMap;
-    rr:template "http://rml.io/test-case/{RML id}/input3/distribution";
-    rr:termType rr:Literal.
-:pom_74 a rr:PredicateObjectMap.
-:map_input-distribution-3_0 rr:predicateObjectMap :pom_74.
-:pm_94 a rr:PredicateMap.
-:pom_74 rr:predicateMap :pm_94.
-:pm_94 rr:constant rdf:type.
-:pom_74 rr:objectMap :om_81.
-:om_81 a rr:ObjectMap;
-    rr:constant "http://www.w3.org/ns/dcat#Distribution";
-    rr:termType rr:IRI.
-:pom_75 a rr:PredicateObjectMap.
-:map_input-distribution-3_0 rr:predicateObjectMap :pom_75.
-:pm_95 a rr:PredicateMap.
-:pom_75 rr:predicateMap :pm_95.
-:pm_95 rr:constant <http://schema.org/name>.
-:pm_96 a rr:PredicateMap.
-:pom_75 rr:predicateMap :pm_96.
-:pm_96 rr:constant <http://purl.org/dc/terms/title>.
-:pm_97 a rr:PredicateMap.
-:pom_75 rr:predicateMap :pm_97.
-:pm_97 rr:constant rdfs:label.
-:pom_75 rr:objectMap :om_82.
-:om_82 a rr:ObjectMap;
-    rr:template "An input file of test case with id {RML id}";
-    rr:termType rr:Literal.
-:pom_76 a rr:PredicateObjectMap.
-:map_input-distribution-3_0 rr:predicateObjectMap :pom_76.
-:pm_98 a rr:PredicateMap.
-:pom_76 rr:predicateMap :pm_98.
-:pm_98 rr:constant <http://www.w3.org/ns/dcat#downloadUrl>.
-:pom_76 rr:objectMap :om_83.
-:om_83 a rr:ObjectMap;
-    rr:template "https://raw.githubusercontent.com/RMLio/rml-test-cases/master/test-cases/{RML id}/{input file 3}";
-    rr:termType rr:IRI.
-:pom_77 a rr:PredicateObjectMap.
-:map_input-distribution-3_0 rr:predicateObjectMap :pom_77.
-:pm_99 a rr:PredicateMap.
-:pom_77 rr:predicateMap :pm_99.
-:pm_99 rr:constant <http://www.w3.org/ns/dcat#mediaType>.
-:pom_77 rr:objectMap :om_84.
-:om_84 a fnml:FunctionTermMap;
-    rr:termType rr:Literal;
-    fnml:functionValue :fn_20.
-:fn_20 rml:logicalSource :source_10;
-    rr:predicateObjectMap :pomexec_20.
-:pomexec_20 rr:predicateMap :pmexec_20.
-:pmexec_20 rr:constant fno:executes.
-:pomexec_20 rr:objectMap :omexec_20.
-:omexec_20 rr:constant "http://example.com/idlab/function/getMIMEType";
-    rr:termType rr:IRI.
-:fn_20 rr:predicateObjectMap :pom_78.
-:pom_78 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_100.
-:pm_100 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_78 rr:objectMap :om_85.
-:om_85 a rr:ObjectMap;
-    rml:reference "input file 3";
-    rr:termType rr:Literal.
-:om_8 a rr:ObjectMap;
-    rr:parentTriplesMap :map_rules-dataset_0;
-    rr:joinCondition :jc_0.
-:jc_0 rr:child "RML id";
-    rr:parent "RML id".
-:om_9 a rr:ObjectMap;
-    rr:parentTriplesMap :map_output-dataset_0;
-    rr:joinCondition :jc_1.
-:jc_1 rr:child "RML id";
-    rr:parent "RML id".
-:om_15 a rr:ObjectMap;
-    rr:parentTriplesMap :map_input-dataset-1_0;
-    rr:joinCondition :jc_2.
-:jc_2 rr:child "RML id";
-    rr:parent "RML id".
-:om_16 a rr:ObjectMap;
-    rr:parentTriplesMap :map_input-dataset-2_0;
-    rr:joinCondition :jc_3.
-:jc_3 rr:child "RML id";
-    rr:parent "RML id".
-:om_17 a rr:ObjectMap;
-    rr:parentTriplesMap :map_input-dataset-3_0;
-    rr:joinCondition :jc_4.
-:jc_4 rr:child "RML id";
-    rr:parent "RML id".
-:om_22 a rr:ObjectMap;
-    rr:parentTriplesMap :map_rules-distribution_0;
-    rr:joinCondition :jc_5.
-:jc_5 rr:child "RML id";
-    rr:parent "RML id".
-:om_32 a rr:ObjectMap;
-    rr:parentTriplesMap :map_output-distribution_0;
-    rr:joinCondition :jc_6.
-:jc_6 rr:child "RML id";
-    rr:parent "RML id".
-:om_46 a rr:ObjectMap;
-    rr:parentTriplesMap :map_input-distribution-1_0;
-    rr:joinCondition :jc_7.
-:jc_7 rr:child "RML id";
-    rr:parent "RML id".
-:om_61 a rr:ObjectMap;
-    rr:parentTriplesMap :map_input-distribution-2_0;
-    rr:joinCondition :jc_8.
-:jc_8 rr:child "RML id";
-    rr:parent "RML id".
-:om_76 a rr:ObjectMap;
-    rr:parentTriplesMap :map_input-distribution-3_0;
-    rr:joinCondition :jc_9.
-:jc_9 rr:child "RML id";
-    rr:parent "RML id".
+:rules_000 rdf:type void:Dataset ;
+	void:exampleResource :map_testcase_000, :map_rules-dataset_000, :map_rules-distribution_000, :map_output-dataset_000, :map_output-distribution_000, :map_input-dataset-1_000, :map_input-distribution-1_000, :map_input-dataset-2_000, :map_input-distribution-2_000, :map_input-dataset-3_000, :map_input-distribution-3_000 .
+
+:map_testcase_000 rml:logicalSource :source_000 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "testcase" ;
+	rr:subjectMap :s_000 ;
+	rr:predicateObjectMap :pom_000, :pom_001, :pom_002, :pom_003, :pom_004, :pom_005, :pom_006, :pom_007, :pom_012 .
+
+:source_000 rdf:type rml:LogicalSource ;
+	rml:source "metadata.csv" ;
+	rml:referenceFormulation ql:CSV .
+
+:s_000 rdf:type rr:SubjectMap ;
+	rr:template "http://rml.io/test-case/{RML id}" .
+
+:pom_000 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_000 ;
+	rr:objectMap :om_000, :om_001, :om_002, :om_003 .
+
+:pm_000 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+:om_000 rdf:type rr:ObjectMap ;
+	rr:constant "http://www.w3.org/ns/earl#TestCase" ;
+	rr:termType rr:IRI .
+
+:om_001 rdf:type rr:ObjectMap ;
+	rr:constant "http://www.w3.org/2006/03/test-description#TestCase" ;
+	rr:termType rr:IRI .
+
+:om_002 rdf:type rr:ObjectMap ;
+	rr:constant "http://rdfunit.aksw.org/ns/core#TestCase" ;
+	rr:termType rr:IRI .
+
+:om_003 rdf:type rr:ObjectMap ;
+	rr:constant "http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#ManifestEntry" ;
+	rr:termType rr:IRI .
+
+:pom_001 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_001 ;
+	rr:objectMap :om_004 .
+
+:pm_001 rdf:type rr:PredicateMap ;
+	rr:constant dc:identifier .
+
+:om_004 rdf:type rr:ObjectMap ;
+	rml:reference "RML id" ;
+	rr:termType rr:Literal .
+
+:pom_002 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_002, :pm_003, :pm_004, :pm_005 ;
+	rr:objectMap :om_005 .
+
+:pm_002 rdf:type rr:PredicateMap ;
+	rr:constant <http://schema.org/name> .
+
+:pm_003 rdf:type rr:PredicateMap ;
+	rr:constant dc:title .
+
+:pm_004 rdf:type rr:PredicateMap ;
+	rr:constant rdfs:label .
+
+:pm_005 rdf:type rr:PredicateMap ;
+	rr:constant mf:name .
+
+:om_005 rdf:type rr:ObjectMap ;
+	rml:reference "title" ;
+	rr:termType rr:Literal .
+
+:pom_003 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_006, :pm_007, :pm_008 ;
+	rr:objectMap :om_006 .
+
+:pm_006 rdf:type rr:PredicateMap ;
+	rr:constant <http://schema.org/description> .
+
+:pm_007 rdf:type rr:PredicateMap ;
+	rr:constant dc:description .
+
+:pm_008 rdf:type rr:PredicateMap ;
+	rr:constant test:purpose .
+
+:om_006 rdf:type rr:ObjectMap ;
+	rml:reference "purpose" ;
+	rr:termType rr:Literal .
+
+:pom_004 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_009 ;
+	rr:objectMap :om_007 .
+
+:pm_009 rdf:type rr:PredicateMap ;
+	rr:constant test:specificationReference .
+
+:om_007 rdf:type rr:ObjectMap ;
+	rml:reference "part of spec" ;
+	rr:termType rr:IRI .
+
+:pom_005 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_010, :pm_011, :pm_012 ;
+	rr:objectMap :om_008 .
+
+:pm_010 rdf:type rr:PredicateMap ;
+	rr:constant dc:hasPart .
+
+:pm_011 rdf:type rr:PredicateMap ;
+	rr:constant test:informationResourceInput .
+
+:pm_012 rdf:type rr:PredicateMap ;
+	rr:constant rml-tc:rules .
+
+:pom_006 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_013, :pm_014, :pm_015 ;
+	rr:objectMap :om_009 .
+
+:pm_013 rdf:type rr:PredicateMap ;
+	rr:constant dc:hasPart .
+
+:pm_014 rdf:type rr:PredicateMap ;
+	rr:constant test:expectedResults .
+
+:pm_015 rdf:type rr:PredicateMap ;
+	rr:constant mf:result .
+
+:pom_007 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_016, :pm_017, :pm_018 ;
+	rr:objectMap :om_010 .
+
+:pm_016 rdf:type rr:PredicateMap ;
+	rr:constant dc:hasPart .
+
+:pm_017 rdf:type rr:PredicateMap ;
+	rr:constant test:expectedResults .
+
+:pm_018 rdf:type rr:PredicateMap ;
+	rr:constant mf:result .
+
+:om_010 rdf:type fnml:FunctionTermMap ;
+	rr:termType rr:IRI ;
+	fnml:functionValue :fn_000 .
+
+:fn_000 rml:logicalSource :source_000 ;
+	rr:predicateObjectMap :pomexec_000, :pom_008, :pom_011 .
+
+:pomexec_000 rr:predicateMap :pmexec_000 ;
+	rr:objectMap :omexec_000 .
+
+:pmexec_000 rr:constant fno:executes .
+
+:omexec_000 rr:constant "http://example.com/idlab/function/trueCondition" ;
+	rr:termType rr:IRI .
+
+:pom_008 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_019 ;
+	rr:objectMap :om_011 .
+
+:pm_019 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:strBoolean .
+
+:om_011 rdf:type rr:ObjectMap, fnml:FunctionTermMap ;
+	fnml:functionValue :fn_001 .
+
+:fn_001 rml:logicalSource :source_000 ;
+	rr:predicateObjectMap :pomexec_001, :pom_009, :pom_010 .
+
+:pomexec_001 rr:predicateMap :pmexec_001 ;
+	rr:objectMap :omexec_001 .
+
+:pmexec_001 rr:constant fno:executes .
+
+:omexec_001 rr:constant "http://example.com/idlab/function/equal" ;
+	rr:termType rr:IRI .
+
+:pom_009 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_020 ;
+	rr:objectMap :om_012 .
+
+:pm_020 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter .
+
+:om_012 rdf:type rr:ObjectMap ;
+	rml:reference "error expected?" ;
+	rr:termType rr:Literal .
+
+:pom_010 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_021 ;
+	rr:objectMap :om_013 .
+
+:pm_021 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter2 .
+
+:om_013 rdf:type rr:ObjectMap ;
+	rr:constant "true" ;
+	rr:termType rr:Literal .
+
+:pom_011 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_022 ;
+	rr:objectMap :om_014 .
+
+:pm_022 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:str .
+
+:om_014 rdf:type rr:ObjectMap ;
+	rr:constant "http://rml.io/ns/test-case/InvalidRulesError" ;
+	rr:termType rr:IRI .
+
+:pom_012 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_023, :pm_024 ;
+	rr:objectMap :om_015, :om_016, :om_017 .
+
+:pm_023 rdf:type rr:PredicateMap ;
+	rr:constant dc:hasPart .
+
+:pm_024 rdf:type rr:PredicateMap ;
+	rr:constant test:informationResourceInput .
+
+:map_rules-dataset_000 rml:logicalSource :source_001 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "rules-dataset" ;
+	rr:subjectMap :s_001 ;
+	rr:predicateObjectMap :pom_013, :pom_014, :pom_015 .
+
+:source_001 rdf:type rml:LogicalSource ;
+	rml:source "metadata.csv" ;
+	rml:referenceFormulation ql:CSV .
+
+:s_001 rdf:type rr:SubjectMap ;
+	rr:template "http://rml.io/test-case/{RML id}/rules" .
+
+:pom_013 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_025 ;
+	rr:objectMap :om_018 .
+
+:pm_025 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+:om_018 rdf:type rr:ObjectMap ;
+	rr:constant "http://www.w3.org/ns/dcat#Dataset" ;
+	rr:termType rr:IRI .
+
+:pom_014 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_026 ;
+	rr:objectMap :om_019, :om_020, :om_021 .
+
+:pm_026 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#keyword> .
+
+:om_019 rdf:type rr:ObjectMap ;
+	rr:constant "rml" ;
+	rr:termType rr:Literal .
+
+:om_020 rdf:type rr:ObjectMap ;
+	rr:constant "rules" ;
+	rr:termType rr:Literal .
+
+:om_021 rdf:type rr:ObjectMap ;
+	rr:constant "mapping" ;
+	rr:termType rr:Literal .
+
+:pom_015 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_027 ;
+	rr:objectMap :om_022 .
+
+:pm_027 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#distribution> .
+
+:map_rules-distribution_000 rml:logicalSource :source_002 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "rules-distribution" ;
+	rr:subjectMap :s_002 ;
+	rr:predicateObjectMap :pom_016, :pom_017, :pom_018, :pom_019 .
+
+:source_002 rdf:type rml:LogicalSource ;
+	rml:source "metadata.csv" ;
+	rml:referenceFormulation ql:CSV .
+
+:s_002 rdf:type rr:SubjectMap ;
+	rr:template "http://rml.io/test-case/{RML id}/rules/distribution" .
+
+:pom_016 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_028 ;
+	rr:objectMap :om_023 .
+
+:pm_028 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+:om_023 rdf:type rr:ObjectMap ;
+	rr:constant "http://www.w3.org/ns/dcat#Distribution" ;
+	rr:termType rr:IRI .
+
+:pom_017 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_029, :pm_030, :pm_031 ;
+	rr:objectMap :om_024 .
+
+:pm_029 rdf:type rr:PredicateMap ;
+	rr:constant <http://schema.org/name> .
+
+:pm_030 rdf:type rr:PredicateMap ;
+	rr:constant dc:title .
+
+:pm_031 rdf:type rr:PredicateMap ;
+	rr:constant rdfs:label .
+
+:om_024 rdf:type rr:ObjectMap ;
+	rr:template "RML rules in Turtle format of test case with id {RML id}" ;
+	rr:termType rr:Literal .
+
+:pom_018 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_032 ;
+	rr:objectMap :om_025 .
+
+:pm_032 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#downloadUrl> .
+
+:om_025 rdf:type rr:ObjectMap ;
+	rr:template "https://raw.githubusercontent.com/RMLio/rml-test-cases/master/test-cases/{RML id}/mapping.ttl" ;
+	rr:termType rr:IRI .
+
+:pom_019 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_033 ;
+	rr:objectMap :om_026 .
+
+:pm_033 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#mediaType> .
+
+:om_026 rdf:type rr:ObjectMap ;
+	rr:constant "text/turtle" ;
+	rr:termType rr:Literal .
+
+:map_output-dataset_000 rml:logicalSource :source_003 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "output-dataset" ;
+	rr:subjectMap :s_003 ;
+	rr:predicateObjectMap :pom_024, :pom_025 .
+
+:source_003 rdf:type rml:LogicalSource ;
+	rml:source "metadata.csv" ;
+	rml:referenceFormulation ql:CSV .
+
+:s_003 rdf:type rr:SubjectMap, fnml:FunctionTermMap ;
+	rr:termType rr:IRI ;
+	fnml:functionValue :fn_002 .
+
+:fn_002 rml:logicalSource :source_003 ;
+	rr:predicateObjectMap :pomexec_002, :pom_020, :pom_023 .
+
+:pomexec_002 rr:predicateMap :pmexec_002 ;
+	rr:objectMap :omexec_002 .
+
+:pmexec_002 rr:constant fno:executes .
+
+:omexec_002 rr:constant "http://example.com/idlab/function/trueCondition" ;
+	rr:termType rr:IRI .
+
+:pom_020 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_034 ;
+	rr:objectMap :om_027 .
+
+:pm_034 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:strBoolean .
+
+:om_027 rdf:type rr:ObjectMap, fnml:FunctionTermMap ;
+	fnml:functionValue :fn_003 .
+
+:fn_003 rml:logicalSource :source_003 ;
+	rr:predicateObjectMap :pomexec_003, :pom_021, :pom_022 .
+
+:pomexec_003 rr:predicateMap :pmexec_003 ;
+	rr:objectMap :omexec_003 .
+
+:pmexec_003 rr:constant fno:executes .
+
+:omexec_003 rr:constant "http://example.com/idlab/function/equal" ;
+	rr:termType rr:IRI .
+
+:pom_021 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_035 ;
+	rr:objectMap :om_028 .
+
+:pm_035 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter .
+
+:om_028 rdf:type rr:ObjectMap ;
+	rr:constant "false" ;
+	rr:termType rr:Literal .
+
+:pom_022 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_036 ;
+	rr:objectMap :om_029 .
+
+:pm_036 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter2 .
+
+:om_029 rdf:type rr:ObjectMap ;
+	rml:reference "error expected?" ;
+	rr:termType rr:Literal .
+
+:pom_023 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_037 ;
+	rr:objectMap :om_030 .
+
+:pm_037 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:str .
+
+:om_030 rdf:type rr:ObjectMap ;
+	rr:template "http://rml.io/test-case/{RML id}/output" ;
+	rr:termType rr:IRI .
+
+:pom_024 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_038 ;
+	rr:objectMap :om_031 .
+
+:pm_038 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+:om_031 rdf:type rr:ObjectMap ;
+	rr:constant "http://www.w3.org/ns/dcat#Dataset" ;
+	rr:termType rr:IRI .
+
+:pom_025 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_039 ;
+	rr:objectMap :om_032 .
+
+:pm_039 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#distribution> .
+
+:map_output-distribution_000 rml:logicalSource :source_004 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "output-distribution" ;
+	rr:subjectMap :s_004 ;
+	rr:predicateObjectMap :pom_030, :pom_031, :pom_032, :pom_033 .
+
+:source_004 rdf:type rml:LogicalSource ;
+	rml:source "metadata.csv" ;
+	rml:referenceFormulation ql:CSV .
+
+:s_004 rdf:type rr:SubjectMap, fnml:FunctionTermMap ;
+	rr:termType rr:IRI ;
+	fnml:functionValue :fn_004 .
+
+:fn_004 rml:logicalSource :source_004 ;
+	rr:predicateObjectMap :pomexec_004, :pom_026, :pom_029 .
+
+:pomexec_004 rr:predicateMap :pmexec_004 ;
+	rr:objectMap :omexec_004 .
+
+:pmexec_004 rr:constant fno:executes .
+
+:omexec_004 rr:constant "http://example.com/idlab/function/trueCondition" ;
+	rr:termType rr:IRI .
+
+:pom_026 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_040 ;
+	rr:objectMap :om_033 .
+
+:pm_040 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:strBoolean .
+
+:om_033 rdf:type rr:ObjectMap, fnml:FunctionTermMap ;
+	fnml:functionValue :fn_005 .
+
+:fn_005 rml:logicalSource :source_004 ;
+	rr:predicateObjectMap :pomexec_005, :pom_027, :pom_028 .
+
+:pomexec_005 rr:predicateMap :pmexec_005 ;
+	rr:objectMap :omexec_005 .
+
+:pmexec_005 rr:constant fno:executes .
+
+:omexec_005 rr:constant "http://example.com/idlab/function/equal" ;
+	rr:termType rr:IRI .
+
+:pom_027 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_041 ;
+	rr:objectMap :om_034 .
+
+:pm_041 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter .
+
+:om_034 rdf:type rr:ObjectMap ;
+	rr:constant "false" ;
+	rr:termType rr:Literal .
+
+:pom_028 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_042 ;
+	rr:objectMap :om_035 .
+
+:pm_042 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter2 .
+
+:om_035 rdf:type rr:ObjectMap ;
+	rml:reference "error expected?" ;
+	rr:termType rr:Literal .
+
+:pom_029 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_043 ;
+	rr:objectMap :om_036 .
+
+:pm_043 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:str .
+
+:om_036 rdf:type rr:ObjectMap ;
+	rr:template "http://rml.io/test-case/{RML id}/output/distribution" ;
+	rr:termType rr:IRI .
+
+:pom_030 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_044 ;
+	rr:objectMap :om_037 .
+
+:pm_044 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+:om_037 rdf:type rr:ObjectMap ;
+	rr:constant "http://www.w3.org/ns/dcat#Distribution" ;
+	rr:termType rr:IRI .
+
+:pom_031 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_045, :pm_046, :pm_047 ;
+	rr:objectMap :om_038 .
+
+:pm_045 rdf:type rr:PredicateMap ;
+	rr:constant <http://schema.org/name> .
+
+:pm_046 rdf:type rr:PredicateMap ;
+	rr:constant dc:title .
+
+:pm_047 rdf:type rr:PredicateMap ;
+	rr:constant rdfs:label .
+
+:om_038 rdf:type rr:ObjectMap ;
+	rr:template "Expected RDF output of test case with id {RML id}" ;
+	rr:termType rr:Literal .
+
+:pom_032 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_048 ;
+	rr:objectMap :om_039 .
+
+:pm_048 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#downloadUrl> .
+
+:om_039 rdf:type rr:ObjectMap ;
+	rr:template "https://raw.githubusercontent.com/RMLio/rml-test-cases/master/test-cases/{RML id}/output.nq" ;
+	rr:termType rr:IRI .
+
+:pom_033 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_049 ;
+	rr:objectMap :om_040 .
+
+:pm_049 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#mediaType> .
+
+:om_040 rdf:type rr:ObjectMap ;
+	rr:constant "application/n-quads" ;
+	rr:termType rr:Literal .
+
+:map_input-dataset-1_000 rml:logicalSource :source_005 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "input-dataset-1" ;
+	rr:subjectMap :s_005 ;
+	rr:predicateObjectMap :pom_038, :pom_039 .
+
+:source_005 rdf:type rml:LogicalSource ;
+	rml:source "metadata.csv" ;
+	rml:referenceFormulation ql:CSV .
+
+:s_005 rdf:type rr:SubjectMap, fnml:FunctionTermMap ;
+	rr:termType rr:IRI ;
+	fnml:functionValue :fn_006 .
+
+:fn_006 rml:logicalSource :source_005 ;
+	rr:predicateObjectMap :pomexec_006, :pom_034, :pom_037 .
+
+:pomexec_006 rr:predicateMap :pmexec_006 ;
+	rr:objectMap :omexec_006 .
+
+:pmexec_006 rr:constant fno:executes .
+
+:omexec_006 rr:constant "http://example.com/idlab/function/trueCondition" ;
+	rr:termType rr:IRI .
+
+:pom_034 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_050 ;
+	rr:objectMap :om_041 .
+
+:pm_050 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:strBoolean .
+
+:om_041 rdf:type rr:ObjectMap, fnml:FunctionTermMap ;
+	fnml:functionValue :fn_007 .
+
+:fn_007 rml:logicalSource :source_005 ;
+	rr:predicateObjectMap :pomexec_007, :pom_035, :pom_036 .
+
+:pomexec_007 rr:predicateMap :pmexec_007 ;
+	rr:objectMap :omexec_007 .
+
+:pmexec_007 rr:constant fno:executes .
+
+:omexec_007 rr:constant "http://example.com/idlab/function/notEqual" ;
+	rr:termType rr:IRI .
+
+:pom_035 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_051 ;
+	rr:objectMap :om_042 .
+
+:pm_051 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter .
+
+:om_042 rdf:type rr:ObjectMap ;
+	rr:constant "" ;
+	rr:termType rr:Literal .
+
+:pom_036 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_052 ;
+	rr:objectMap :om_043 .
+
+:pm_052 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter2 .
+
+:om_043 rdf:type rr:ObjectMap ;
+	rml:reference "input file 1" ;
+	rr:termType rr:Literal .
+
+:pom_037 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_053 ;
+	rr:objectMap :om_044 .
+
+:pm_053 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:str .
+
+:om_044 rdf:type rr:ObjectMap ;
+	rr:template "http://rml.io/test-case/{RML id}/input1" ;
+	rr:termType rr:IRI .
+
+:pom_038 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_054 ;
+	rr:objectMap :om_045 .
+
+:pm_054 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+:om_045 rdf:type rr:ObjectMap ;
+	rr:constant "http://www.w3.org/ns/dcat#Dataset" ;
+	rr:termType rr:IRI .
+
+:pom_039 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_055 ;
+	rr:objectMap :om_046 .
+
+:pm_055 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#distribution> .
+
+:map_input-distribution-1_000 rml:logicalSource :source_006 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "input-distribution-1" ;
+	rr:subjectMap :s_006 ;
+	rr:predicateObjectMap :pom_044, :pom_045, :pom_046, :pom_047 .
+
+:source_006 rdf:type rml:LogicalSource ;
+	rml:source "metadata.csv" ;
+	rml:referenceFormulation ql:CSV .
+
+:s_006 rdf:type rr:SubjectMap, fnml:FunctionTermMap ;
+	rr:termType rr:IRI ;
+	fnml:functionValue :fn_008 .
+
+:fn_008 rml:logicalSource :source_006 ;
+	rr:predicateObjectMap :pomexec_008, :pom_040, :pom_043 .
+
+:pomexec_008 rr:predicateMap :pmexec_008 ;
+	rr:objectMap :omexec_008 .
+
+:pmexec_008 rr:constant fno:executes .
+
+:omexec_008 rr:constant "http://example.com/idlab/function/trueCondition" ;
+	rr:termType rr:IRI .
+
+:pom_040 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_056 ;
+	rr:objectMap :om_047 .
+
+:pm_056 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:strBoolean .
+
+:om_047 rdf:type rr:ObjectMap, fnml:FunctionTermMap ;
+	fnml:functionValue :fn_009 .
+
+:fn_009 rml:logicalSource :source_006 ;
+	rr:predicateObjectMap :pomexec_009, :pom_041, :pom_042 .
+
+:pomexec_009 rr:predicateMap :pmexec_009 ;
+	rr:objectMap :omexec_009 .
+
+:pmexec_009 rr:constant fno:executes .
+
+:omexec_009 rr:constant "http://example.com/idlab/function/notEqual" ;
+	rr:termType rr:IRI .
+
+:pom_041 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_057 ;
+	rr:objectMap :om_048 .
+
+:pm_057 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter .
+
+:om_048 rdf:type rr:ObjectMap ;
+	rr:constant "" ;
+	rr:termType rr:Literal .
+
+:pom_042 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_058 ;
+	rr:objectMap :om_049 .
+
+:pm_058 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter2 .
+
+:om_049 rdf:type rr:ObjectMap ;
+	rml:reference "input file 1" ;
+	rr:termType rr:Literal .
+
+:pom_043 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_059 ;
+	rr:objectMap :om_050 .
+
+:pm_059 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:str .
+
+:om_050 rdf:type rr:ObjectMap ;
+	rr:template "http://rml.io/test-case/{RML id}/input1/distribution" ;
+	rr:termType rr:IRI .
+
+:pom_044 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_060 ;
+	rr:objectMap :om_051 .
+
+:pm_060 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+:om_051 rdf:type rr:ObjectMap ;
+	rr:constant "http://www.w3.org/ns/dcat#Distribution" ;
+	rr:termType rr:IRI .
+
+:pom_045 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_061, :pm_062, :pm_063 ;
+	rr:objectMap :om_052 .
+
+:pm_061 rdf:type rr:PredicateMap ;
+	rr:constant <http://schema.org/name> .
+
+:pm_062 rdf:type rr:PredicateMap ;
+	rr:constant dc:title .
+
+:pm_063 rdf:type rr:PredicateMap ;
+	rr:constant rdfs:label .
+
+:om_052 rdf:type rr:ObjectMap ;
+	rr:template "An input file of test case with id {RML id}" ;
+	rr:termType rr:Literal .
+
+:pom_046 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_064 ;
+	rr:objectMap :om_053 .
+
+:pm_064 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#downloadUrl> .
+
+:om_053 rdf:type rr:ObjectMap ;
+	rr:template "https://raw.githubusercontent.com/RMLio/rml-test-cases/master/test-cases/{RML id}/{input file 1}" ;
+	rr:termType rr:IRI .
+
+:pom_047 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_065 ;
+	rr:objectMap :om_054 .
+
+:pm_065 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#mediaType> .
+
+:om_054 rdf:type fnml:FunctionTermMap ;
+	rr:termType rr:Literal ;
+	fnml:functionValue :fn_010 .
+
+:fn_010 rml:logicalSource :source_006 ;
+	rr:predicateObjectMap :pomexec_010, :pom_048 .
+
+:pomexec_010 rr:predicateMap :pmexec_010 ;
+	rr:objectMap :omexec_010 .
+
+:pmexec_010 rr:constant fno:executes .
+
+:omexec_010 rr:constant "http://example.com/idlab/function/getMIMEType" ;
+	rr:termType rr:IRI .
+
+:pom_048 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_066 ;
+	rr:objectMap :om_055 .
+
+:pm_066 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:str .
+
+:om_055 rdf:type rr:ObjectMap ;
+	rml:reference "input file 1" ;
+	rr:termType rr:Literal .
+
+:map_input-dataset-2_000 rml:logicalSource :source_007 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "input-dataset-2" ;
+	rr:subjectMap :s_007 ;
+	rr:predicateObjectMap :pom_053, :pom_054 .
+
+:source_007 rdf:type rml:LogicalSource ;
+	rml:source "metadata.csv" ;
+	rml:referenceFormulation ql:CSV .
+
+:s_007 rdf:type rr:SubjectMap, fnml:FunctionTermMap ;
+	rr:termType rr:IRI ;
+	fnml:functionValue :fn_011 .
+
+:fn_011 rml:logicalSource :source_007 ;
+	rr:predicateObjectMap :pomexec_011, :pom_049, :pom_052 .
+
+:pomexec_011 rr:predicateMap :pmexec_011 ;
+	rr:objectMap :omexec_011 .
+
+:pmexec_011 rr:constant fno:executes .
+
+:omexec_011 rr:constant "http://example.com/idlab/function/trueCondition" ;
+	rr:termType rr:IRI .
+
+:pom_049 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_067 ;
+	rr:objectMap :om_056 .
+
+:pm_067 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:strBoolean .
+
+:om_056 rdf:type rr:ObjectMap, fnml:FunctionTermMap ;
+	fnml:functionValue :fn_012 .
+
+:fn_012 rml:logicalSource :source_007 ;
+	rr:predicateObjectMap :pomexec_012, :pom_050, :pom_051 .
+
+:pomexec_012 rr:predicateMap :pmexec_012 ;
+	rr:objectMap :omexec_012 .
+
+:pmexec_012 rr:constant fno:executes .
+
+:omexec_012 rr:constant "http://example.com/idlab/function/notEqual" ;
+	rr:termType rr:IRI .
+
+:pom_050 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_068 ;
+	rr:objectMap :om_057 .
+
+:pm_068 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter .
+
+:om_057 rdf:type rr:ObjectMap ;
+	rr:constant "" ;
+	rr:termType rr:Literal .
+
+:pom_051 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_069 ;
+	rr:objectMap :om_058 .
+
+:pm_069 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter2 .
+
+:om_058 rdf:type rr:ObjectMap ;
+	rml:reference "input file 2" ;
+	rr:termType rr:Literal .
+
+:pom_052 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_070 ;
+	rr:objectMap :om_059 .
+
+:pm_070 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:str .
+
+:om_059 rdf:type rr:ObjectMap ;
+	rr:template "http://rml.io/test-case/{RML id}/input2" ;
+	rr:termType rr:IRI .
+
+:pom_053 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_071 ;
+	rr:objectMap :om_060 .
+
+:pm_071 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+:om_060 rdf:type rr:ObjectMap ;
+	rr:constant "http://www.w3.org/ns/dcat#Dataset" ;
+	rr:termType rr:IRI .
+
+:pom_054 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_072 ;
+	rr:objectMap :om_061 .
+
+:pm_072 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#distribution> .
+
+:map_input-distribution-2_000 rml:logicalSource :source_008 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "input-distribution-2" ;
+	rr:subjectMap :s_008 ;
+	rr:predicateObjectMap :pom_059, :pom_060, :pom_061, :pom_062 .
+
+:source_008 rdf:type rml:LogicalSource ;
+	rml:source "metadata.csv" ;
+	rml:referenceFormulation ql:CSV .
+
+:s_008 rdf:type rr:SubjectMap, fnml:FunctionTermMap ;
+	rr:termType rr:IRI ;
+	fnml:functionValue :fn_013 .
+
+:fn_013 rml:logicalSource :source_008 ;
+	rr:predicateObjectMap :pomexec_013, :pom_055, :pom_058 .
+
+:pomexec_013 rr:predicateMap :pmexec_013 ;
+	rr:objectMap :omexec_013 .
+
+:pmexec_013 rr:constant fno:executes .
+
+:omexec_013 rr:constant "http://example.com/idlab/function/trueCondition" ;
+	rr:termType rr:IRI .
+
+:pom_055 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_073 ;
+	rr:objectMap :om_062 .
+
+:pm_073 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:strBoolean .
+
+:om_062 rdf:type rr:ObjectMap, fnml:FunctionTermMap ;
+	fnml:functionValue :fn_014 .
+
+:fn_014 rml:logicalSource :source_008 ;
+	rr:predicateObjectMap :pomexec_014, :pom_056, :pom_057 .
+
+:pomexec_014 rr:predicateMap :pmexec_014 ;
+	rr:objectMap :omexec_014 .
+
+:pmexec_014 rr:constant fno:executes .
+
+:omexec_014 rr:constant "http://example.com/idlab/function/notEqual" ;
+	rr:termType rr:IRI .
+
+:pom_056 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_074 ;
+	rr:objectMap :om_063 .
+
+:pm_074 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter .
+
+:om_063 rdf:type rr:ObjectMap ;
+	rr:constant "" ;
+	rr:termType rr:Literal .
+
+:pom_057 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_075 ;
+	rr:objectMap :om_064 .
+
+:pm_075 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter2 .
+
+:om_064 rdf:type rr:ObjectMap ;
+	rml:reference "input file 2" ;
+	rr:termType rr:Literal .
+
+:pom_058 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_076 ;
+	rr:objectMap :om_065 .
+
+:pm_076 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:str .
+
+:om_065 rdf:type rr:ObjectMap ;
+	rr:template "http://rml.io/test-case/{RML id}/input2/distribution" ;
+	rr:termType rr:IRI .
+
+:pom_059 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_077 ;
+	rr:objectMap :om_066 .
+
+:pm_077 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+:om_066 rdf:type rr:ObjectMap ;
+	rr:constant "http://www.w3.org/ns/dcat#Distribution" ;
+	rr:termType rr:IRI .
+
+:pom_060 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_078, :pm_079, :pm_080 ;
+	rr:objectMap :om_067 .
+
+:pm_078 rdf:type rr:PredicateMap ;
+	rr:constant <http://schema.org/name> .
+
+:pm_079 rdf:type rr:PredicateMap ;
+	rr:constant dc:title .
+
+:pm_080 rdf:type rr:PredicateMap ;
+	rr:constant rdfs:label .
+
+:om_067 rdf:type rr:ObjectMap ;
+	rr:template "An input file of test case with id {RML id}" ;
+	rr:termType rr:Literal .
+
+:pom_061 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_081 ;
+	rr:objectMap :om_068 .
+
+:pm_081 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#downloadUrl> .
+
+:om_068 rdf:type rr:ObjectMap ;
+	rr:template "https://raw.githubusercontent.com/RMLio/rml-test-cases/master/test-cases/{RML id}/{input file 2}" ;
+	rr:termType rr:IRI .
+
+:pom_062 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_082 ;
+	rr:objectMap :om_069 .
+
+:pm_082 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#mediaType> .
+
+:om_069 rdf:type fnml:FunctionTermMap ;
+	rr:termType rr:Literal ;
+	fnml:functionValue :fn_015 .
+
+:fn_015 rml:logicalSource :source_008 ;
+	rr:predicateObjectMap :pomexec_015, :pom_063 .
+
+:pomexec_015 rr:predicateMap :pmexec_015 ;
+	rr:objectMap :omexec_015 .
+
+:pmexec_015 rr:constant fno:executes .
+
+:omexec_015 rr:constant "http://example.com/idlab/function/getMIMEType" ;
+	rr:termType rr:IRI .
+
+:pom_063 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_083 ;
+	rr:objectMap :om_070 .
+
+:pm_083 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:str .
+
+:om_070 rdf:type rr:ObjectMap ;
+	rml:reference "input file 2" ;
+	rr:termType rr:Literal .
+
+:map_input-dataset-3_000 rml:logicalSource :source_009 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "input-dataset-3" ;
+	rr:subjectMap :s_009 ;
+	rr:predicateObjectMap :pom_068, :pom_069 .
+
+:source_009 rdf:type rml:LogicalSource ;
+	rml:source "metadata.csv" ;
+	rml:referenceFormulation ql:CSV .
+
+:s_009 rdf:type rr:SubjectMap, fnml:FunctionTermMap ;
+	rr:termType rr:IRI ;
+	fnml:functionValue :fn_016 .
+
+:fn_016 rml:logicalSource :source_009 ;
+	rr:predicateObjectMap :pomexec_016, :pom_064, :pom_067 .
+
+:pomexec_016 rr:predicateMap :pmexec_016 ;
+	rr:objectMap :omexec_016 .
+
+:pmexec_016 rr:constant fno:executes .
+
+:omexec_016 rr:constant "http://example.com/idlab/function/trueCondition" ;
+	rr:termType rr:IRI .
+
+:pom_064 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_084 ;
+	rr:objectMap :om_071 .
+
+:pm_084 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:strBoolean .
+
+:om_071 rdf:type rr:ObjectMap, fnml:FunctionTermMap ;
+	fnml:functionValue :fn_017 .
+
+:fn_017 rml:logicalSource :source_009 ;
+	rr:predicateObjectMap :pomexec_017, :pom_065, :pom_066 .
+
+:pomexec_017 rr:predicateMap :pmexec_017 ;
+	rr:objectMap :omexec_017 .
+
+:pmexec_017 rr:constant fno:executes .
+
+:omexec_017 rr:constant "http://example.com/idlab/function/notEqual" ;
+	rr:termType rr:IRI .
+
+:pom_065 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_085 ;
+	rr:objectMap :om_072 .
+
+:pm_085 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter .
+
+:om_072 rdf:type rr:ObjectMap ;
+	rr:constant "" ;
+	rr:termType rr:Literal .
+
+:pom_066 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_086 ;
+	rr:objectMap :om_073 .
+
+:pm_086 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter2 .
+
+:om_073 rdf:type rr:ObjectMap ;
+	rml:reference "input file 3" ;
+	rr:termType rr:Literal .
+
+:pom_067 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_087 ;
+	rr:objectMap :om_074 .
+
+:pm_087 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:str .
+
+:om_074 rdf:type rr:ObjectMap ;
+	rr:template "http://rml.io/test-case/{RML id}/input3" ;
+	rr:termType rr:IRI .
+
+:pom_068 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_088 ;
+	rr:objectMap :om_075 .
+
+:pm_088 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+:om_075 rdf:type rr:ObjectMap ;
+	rr:constant "http://www.w3.org/ns/dcat#Dataset" ;
+	rr:termType rr:IRI .
+
+:pom_069 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_089 ;
+	rr:objectMap :om_076 .
+
+:pm_089 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#distribution> .
+
+:map_input-distribution-3_000 rml:logicalSource :source_010 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "input-distribution-3" ;
+	rr:subjectMap :s_010 ;
+	rr:predicateObjectMap :pom_074, :pom_075, :pom_076, :pom_077 .
+
+:source_010 rdf:type rml:LogicalSource ;
+	rml:source "metadata.csv" ;
+	rml:referenceFormulation ql:CSV .
+
+:s_010 rdf:type rr:SubjectMap, fnml:FunctionTermMap ;
+	rr:termType rr:IRI ;
+	fnml:functionValue :fn_018 .
+
+:fn_018 rml:logicalSource :source_010 ;
+	rr:predicateObjectMap :pomexec_018, :pom_070, :pom_073 .
+
+:pomexec_018 rr:predicateMap :pmexec_018 ;
+	rr:objectMap :omexec_018 .
+
+:pmexec_018 rr:constant fno:executes .
+
+:omexec_018 rr:constant "http://example.com/idlab/function/trueCondition" ;
+	rr:termType rr:IRI .
+
+:pom_070 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_090 ;
+	rr:objectMap :om_077 .
+
+:pm_090 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:strBoolean .
+
+:om_077 rdf:type rr:ObjectMap, fnml:FunctionTermMap ;
+	fnml:functionValue :fn_019 .
+
+:fn_019 rml:logicalSource :source_010 ;
+	rr:predicateObjectMap :pomexec_019, :pom_071, :pom_072 .
+
+:pomexec_019 rr:predicateMap :pmexec_019 ;
+	rr:objectMap :omexec_019 .
+
+:pmexec_019 rr:constant fno:executes .
+
+:omexec_019 rr:constant "http://example.com/idlab/function/notEqual" ;
+	rr:termType rr:IRI .
+
+:pom_071 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_091 ;
+	rr:objectMap :om_078 .
+
+:pm_091 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter .
+
+:om_078 rdf:type rr:ObjectMap ;
+	rr:constant "" ;
+	rr:termType rr:Literal .
+
+:pom_072 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_092 ;
+	rr:objectMap :om_079 .
+
+:pm_092 rdf:type rr:PredicateMap ;
+	rr:constant grel:valueParameter2 .
+
+:om_079 rdf:type rr:ObjectMap ;
+	rml:reference "input file 3" ;
+	rr:termType rr:Literal .
+
+:pom_073 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_093 ;
+	rr:objectMap :om_080 .
+
+:pm_093 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:str .
+
+:om_080 rdf:type rr:ObjectMap ;
+	rr:template "http://rml.io/test-case/{RML id}/input3/distribution" ;
+	rr:termType rr:IRI .
+
+:pom_074 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_094 ;
+	rr:objectMap :om_081 .
+
+:pm_094 rdf:type rr:PredicateMap ;
+	rr:constant rdf:type .
+
+:om_081 rdf:type rr:ObjectMap ;
+	rr:constant "http://www.w3.org/ns/dcat#Distribution" ;
+	rr:termType rr:IRI .
+
+:pom_075 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_095, :pm_096, :pm_097 ;
+	rr:objectMap :om_082 .
+
+:pm_095 rdf:type rr:PredicateMap ;
+	rr:constant <http://schema.org/name> .
+
+:pm_096 rdf:type rr:PredicateMap ;
+	rr:constant dc:title .
+
+:pm_097 rdf:type rr:PredicateMap ;
+	rr:constant rdfs:label .
+
+:om_082 rdf:type rr:ObjectMap ;
+	rr:template "An input file of test case with id {RML id}" ;
+	rr:termType rr:Literal .
+
+:pom_076 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_098 ;
+	rr:objectMap :om_083 .
+
+:pm_098 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#downloadUrl> .
+
+:om_083 rdf:type rr:ObjectMap ;
+	rr:template "https://raw.githubusercontent.com/RMLio/rml-test-cases/master/test-cases/{RML id}/{input file 3}" ;
+	rr:termType rr:IRI .
+
+:pom_077 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_099 ;
+	rr:objectMap :om_084 .
+
+:pm_099 rdf:type rr:PredicateMap ;
+	rr:constant <http://www.w3.org/ns/dcat#mediaType> .
+
+:om_084 rdf:type fnml:FunctionTermMap ;
+	rr:termType rr:Literal ;
+	fnml:functionValue :fn_020 .
+
+:fn_020 rml:logicalSource :source_010 ;
+	rr:predicateObjectMap :pomexec_020, :pom_078 .
+
+:pomexec_020 rr:predicateMap :pmexec_020 ;
+	rr:objectMap :omexec_020 .
+
+:pmexec_020 rr:constant fno:executes .
+
+:omexec_020 rr:constant "http://example.com/idlab/function/getMIMEType" ;
+	rr:termType rr:IRI .
+
+:pom_078 rdf:type rr:PredicateObjectMap ;
+	rr:predicateMap :pm_100 ;
+	rr:objectMap :om_085 .
+
+:pm_100 rdf:type rr:PredicateMap ;
+	rr:constant idlab-fn:str .
+
+:om_085 rdf:type rr:ObjectMap ;
+	rml:reference "input file 3" ;
+	rr:termType rr:Literal .
+
+:om_008 rdf:type rr:ObjectMap ;
+	rr:parentTriplesMap :map_rules-dataset_000 ;
+	rr:joinCondition :jc_000 .
+
+:jc_000 rr:child "RML id" ;
+	rr:parent "RML id" .
+
+:om_009 rdf:type rr:ObjectMap ;
+	rr:parentTriplesMap :map_output-dataset_000 ;
+	rr:joinCondition :jc_001 .
+
+:jc_001 rr:child "RML id" ;
+	rr:parent "RML id" .
+
+:om_015 rdf:type rr:ObjectMap ;
+	rr:parentTriplesMap :map_input-dataset-1_000 ;
+	rr:joinCondition :jc_002 .
+
+:jc_002 rr:child "RML id" ;
+	rr:parent "RML id" .
+
+:om_016 rdf:type rr:ObjectMap ;
+	rr:parentTriplesMap :map_input-dataset-2_000 ;
+	rr:joinCondition :jc_003 .
+
+:jc_003 rr:child "RML id" ;
+	rr:parent "RML id" .
+
+:om_017 rdf:type rr:ObjectMap ;
+	rr:parentTriplesMap :map_input-dataset-3_000 ;
+	rr:joinCondition :jc_004 .
+
+:jc_004 rr:child "RML id" ;
+	rr:parent "RML id" .
+
+:om_022 rdf:type rr:ObjectMap ;
+	rr:parentTriplesMap :map_rules-distribution_000 ;
+	rr:joinCondition :jc_005 .
+
+:jc_005 rr:child "RML id" ;
+	rr:parent "RML id" .
+
+:om_032 rdf:type rr:ObjectMap ;
+	rr:parentTriplesMap :map_output-distribution_000 ;
+	rr:joinCondition :jc_006 .
+
+:jc_006 rr:child "RML id" ;
+	rr:parent "RML id" .
+
+:om_046 rdf:type rr:ObjectMap ;
+	rr:parentTriplesMap :map_input-distribution-1_000 ;
+	rr:joinCondition :jc_007 .
+
+:jc_007 rr:child "RML id" ;
+	rr:parent "RML id" .
+
+:om_061 rdf:type rr:ObjectMap ;
+	rr:parentTriplesMap :map_input-distribution-2_000 ;
+	rr:joinCondition :jc_008 .
+
+:jc_008 rr:child "RML id" ;
+	rr:parent "RML id" .
+
+:om_076 rdf:type rr:ObjectMap ;
+	rr:parentTriplesMap :map_input-distribution-3_000 ;
+	rr:joinCondition :jc_009 .
+
+:jc_009 rr:child "RML id" ;
+	rr:parent "RML id" .
+

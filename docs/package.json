@@ -9,9 +9,9 @@
   "author": "Pieter Heyvaert <pheyvaer.heyvaert@ugent.be>",
   "license": "MIT",
   "dependencies": {
-    "@11ty/eleventy": "^0.7.1",
-    "@comunica/actor-init-sparql-rdfjs": "^1.5.3",
-    "n3": "^1.0.3",
+    "@11ty/eleventy": "^1.0.2",
+    "@comunica/query-sparql-rdfjs": "~2.4.3",
+    "n3": "^1.16.3",
     "q": "^1.5.1",
     "streamify-array": "^1.0.1"
   }

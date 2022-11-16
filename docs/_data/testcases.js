@@ -3,7 +3,7 @@
  * Ghent University - imec - IDLab
  */
 
-const newEngine = require('@comunica/actor-init-sparql-rdfjs').newEngine;
+const QueryEngine = require('@comunica/query-sparql-rdfjs').QueryEngine;
 const N3 = require('n3');
 const Q = require('q');
 const fs = require('fs');
@@ -16,13 +16,11 @@ module.exports = async () => {
 };
 
 async function getTestCases(path) {
-  const deferred = Q.defer();
   const rdfjsSource = await getRDFjsSourceFromFile(path);
-  const engine = newEngine();
+  const myEngine = new QueryEngine();
   const testcases = [];
-  const promises = [];
 
-  engine.query(`SELECT * {
+  const bindingsStream = await myEngine.queryBindings(`SELECT * {
      ?s a <http://www.w3.org/ns/earl#TestCase>;
         <http://schema.org/name> ?name;
         <http://schema.org/description> ?description;
@@ -40,86 +38,62 @@ async function getTestCases(path) {
         
         OPTIONAL { ?s <http://www.w3.org/2006/03/test-description#specificationReference> ?specRef } .
   }`,
-    {sources: [{type: 'rdfjsSource', value: rdfjsSource}]})
-    .then(function (result) {
-      result.bindingsStream.on('data', async function (data) {
-        data = data.toObject();
-        const id = data['?id'].value;
+    { sources: [{ type: 'rdfjsSource', value: rdfjsSource }] });
+  const bindings = await bindingsStream.toArray();
+  for (let index = 0; index < bindings.length; index++) {
+    const data = bindings[index];
+    const id = data.get('id').value;
 
-        if (id.indexOf('SPARQL') === -1) {
-          const dataDeferred = Q.defer();
-          promises.push(dataDeferred.promise);
-          console.log(`${id}: started.`);
-          let output;
-          let outputStr;
+    if (id.indexOf('SPARQL') === -1) {
+      console.log(`${id}: started.`);
 
-          const outputDeferred = Q.defer();
+      let output = null;
+      let outputStr = null;
+      if (data.has('output')) {
+        output = data.get('output').value;
+        outputStr = await fs.promises.readFile(output.replace('https://raw.githubusercontent.com/RMLio/rml-test-cases/master', '..'), 'utf-8')
+        outputStr = outputStr.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        console.log(`${id}: output is read from file`);
+      }
 
-          if (data['?output']) {
-            output = data['?output'].value;
-            fs.readFile(output.replace('https://raw.githubusercontent.com/RMLio/rml-test-cases/master', '..'), 'utf-8', (err, data) => {
-              outputStr = data.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-              console.log(`${id}: output is read from file`);
-              outputDeferred.resolve();
-            });
-          } else {
-            outputDeferred.resolve();
-          }
+      const rules = data.get('rules').value;
+      let rulesStr = await fs.promises.readFile(rules.replace('https://raw.githubusercontent.com/RMLio/rml-test-cases/master', '..'), 'utf-8');
+      rulesStr = rulesStr.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      console.log(`${id}: rules are read from file`);
 
-          const rulesDeferred = Q.defer();
-          const rules = data['?rules'].value;
-          let rulesStr;
+      let specRef = null;
+      if (data.has('specRef')) {
+        specRef = data.get('specRef').value || null;
+      }
 
-          fs.readFile(rules.replace('https://raw.githubusercontent.com/RMLio/rml-test-cases/master', '..'), 'utf-8', (err, data) => {
-            rulesStr = data.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-            console.log(`${id}: rules are read from file`);
-            rulesDeferred.resolve();
-          });
-
-          let specRef = data['?specRef'];
-
-          if (specRef) {
-            specRef = specRef.value;
-          }
-
-          Q.all([rulesDeferred.promise, outputDeferred.promise]).then(() => {
-            testcases.push({
-              iri: data['?s'].value,
-              title: data['?name'].value,
-              description: data['?description'].value,
-              rules,
-              rulesStr,
-              id,
-              errorExpected: '' + (data['?expectedResult'].value === 'http://rml.io/ns/test-case/InvalidRulesError'),
-              output,
-              outputStr,
-              specRef
-            });
-
-            console.log(`${id}: done.`);
-            dataDeferred.resolve();
-          });
-        } else {
-          console.log(`${id}: skipped.`);
-        }
+      testcases.push({
+        iri: data.get('s').value,
+        title: data.get('name').value,
+        description: data.get('description').value,
+        rules,
+        rulesStr,
+        id,
+        errorExpected: '' + (data.get('expectedResult').value === 'http://rml.io/ns/test-case/InvalidRulesError'),
+        output,
+        outputStr,
+        specRef
       });
 
-      result.bindingsStream.on('end', function () {
-        Q.all(promises).then(() => {
-          testcases.sort( (a, b) => {
-            if (a.id > b.id) {
-              return 1;
-            } else {
-              return -1;
-            }
-          });
+      console.log(`${id}: done.`);
+    } else {
+      console.log(`${id}: skipped.`);
+    }
+  }
 
-          deferred.resolve(testcases);
-        });
-      });
-    });
+  testcases.sort((a, b) => {
+    if (a.id > b.id) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
 
-  return deferred.promise;
+  return testcases;
 }
 
 /**
@@ -133,8 +107,8 @@ function getRDFjsSourceFromFile(path) {
   fs.readFile(path, 'utf-8', (err, data) => {
     if (err) deferred.reject(err);
 
-    const parser = N3.Parser();
-    const store = N3.Store();
+    const parser = new N3.Parser();
+    const store = new N3.Store();
 
     parser.parse(data, (err, quad, prefixes) => {
       if (err) {
