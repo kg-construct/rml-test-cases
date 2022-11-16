@@ -118,7 +118,7 @@
 
         <p><b>Title:</b> {{ testcase.title }}</p>
         <p><b>Description:</b> {{ testcase.description }}
-            {% if testcase.specRef != "null" %}
+            {% if testcase.specRef != null %}
             (<a target="_blank" href="{{ testcase.specRef }}">specification reference</a>)
             {% endif %}
         </p>
