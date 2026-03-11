@@ -1,5 +1,7 @@
 # RML Test Cases
 
+### There test cases are deprecated, new test cases are defined per RML module and can be accessed here: https://w3id.org/rml/portal
+
 The [RML](http://rml.io/) test cases are used to determine the conformance to the [RML specification](http://rml.io/spec.html) of tools that execute RML rules.
 
 In the folder `test-cases` you can find the different test cases.
