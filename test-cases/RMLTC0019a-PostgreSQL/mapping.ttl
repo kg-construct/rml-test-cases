@@ -20,7 +20,6 @@
         FROM Employee
         WHERE ID < 30
      """ ;
-     rml:referenceFormulation ql:CSV
   ];
 
   rr:subjectMap [ rml:reference "firstname" ];

@@ -13,7 +13,6 @@
     rml:source <#DB_source>;
     rr:sqlVersion rr:SQL2008;
     rml:query "SELECT kjnqsdjfbqsdjfmsdnfm FROM student";
-    rml:referenceFormulation ql:CSV
   ];
 
   rr:subjectMap [

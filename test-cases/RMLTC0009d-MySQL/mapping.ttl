@@ -19,7 +19,6 @@
         FROM Student
         GROUP BY Name
         """ ;
-    rml:referenceFormulation ql:CSV
   ];
 
   rr:subjectMap [ rr:template "http://example.com/resource/student_{Name}"; ];

@@ -24,7 +24,6 @@
        WHERE Student.ID = Student_Sport.ID_Student
        AND Sport.ID = Student_Sport.ID_Sport;
        """ ;
-       rml:referenceFormulation ql:CSV
    ];
 
     rr:subjectMap [ rr:template "http://example.com/{ID}/{FirstName};{LastName}" ];
