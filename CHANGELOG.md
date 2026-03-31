@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- RMLTC0007h test cases: specify that it should throw an error. Also, use existing references in the mapping rules so that the real issue (generating a non-IRI graph) can be easily tested.
+
 ## [0.2.0] - 2021-04-13
 
 ### Added
